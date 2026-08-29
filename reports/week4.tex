@@ -46,6 +46,7 @@
 专业 & 25级计算机科学与技术 \\
 实验环境 & Linux / Python / ruff / pytest / Make / curl / jq / Git \\
 实验日期 & 2026年9月14日 \\
+GitHub仓库 & \href{https://github.com/MrLLLiao/SystemToolkitDevCourse}{https://github.com/MrLLLiao/SystemToolkitDevCourse} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -226,7 +227,7 @@ rm -f stats.txt report.txt
 
 packages.json 包含 5 条记录：
 
-\begin{lstlisting}[language=json]
+\begin{lstlisting}
 [
   {"name":"alpha","status":"active","downloads":120,"version":"1.2.0"},
   {"name":"beta","status":"inactive","downloads":900,"version":"2.0.0"},
@@ -377,7 +378,7 @@ c4cd828 init: greetlab package from q13
 
 \subsection{Makefile 中的 Tab 缩进}
 
-在实验十四中，Makefile 的配方行必须使用 Tab 而非空格缩进。在 Windows 编辑器中保存时，有时会将 Tab 转换为空格，导致 make 报错"missing separator"。解决方法是在 WSL 中使用 cat -A 检查 Makefile 中的缩进字符，确保配方行以 \texttt{\textasciitab} 开头。
+在实验十四中，Makefile 的配方行必须使用 Tab 而非空格缩进。在 Windows 编辑器中保存时，有时会将 Tab 转换为空格，导致 make 报错"missing separator"。解决方法是在 WSL 中使用 cat -A 检查 Makefile 中的缩进字符，确保配方行以 \texttt{<TAB>} 开头。
 
 \subsection{jq 排序中的多字段排序}
 
