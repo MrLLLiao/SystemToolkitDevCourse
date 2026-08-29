@@ -19,7 +19,7 @@ venv/
 
 # LaTeX build artifacts
 *.aux
-*.log
+# *.log 已移除，避免排除实验日志
 *.out
 *.toc
 *.fls
