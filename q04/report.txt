@@ -1,0 +1,32 @@
+Tool Report
+Liao Shijia-25020007073
+August 24, 2026
+
+1
+
+Result
+
+The following equation shows a simple calculation of the total latency. As shown
+in Equation (1), the total latency is the sum of the individual latency values.
+Ltotal =
+
+n
+X
+
+Li
+
+(1)
+
+i=1
+
+Table 1 summarizes the example results.
+Table 1: Example result summary
+Item
+Value
+Average latency 193.75 ms
+The equation provides a mathematical representation of total latency, while
+Table 1 gives a compact summary of the corresponding results.
+
+1
+
+
