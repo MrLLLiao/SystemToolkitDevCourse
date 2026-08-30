@@ -1,0 +1,29 @@
+===== 测试目录中的文件 =====
+scripts/hello.sh
+scripts/my script.sh
+scripts/notshell.txt
+scripts/world.sh
+
+===== 方法1: find + xargs（不处理空格，可能出错） =====
+ 2 scripts/hello.sh
+ 3 scripts/world.sh
+ 5 total
+
+===== 方法2: find -print0 + xargs -0（正确处理空格） =====
+  3 scripts/my script.sh
+  2 scripts/hello.sh
+  3 scripts/world.sh
+  8 total
+
+===== 对比: 含空格文件单独统计 =====
+3 scripts/my script.sh
+
+===== 只统计.sh文件总行数 =====
+  8 total
+
+===== xargs -n1 逐个文件统计 =====
+3 scripts/my script.sh
+2 scripts/hello.sh
+3 scripts/world.sh
+wc: scripts/my: No such file or directory
+wc: script.sh: No such file or directory
