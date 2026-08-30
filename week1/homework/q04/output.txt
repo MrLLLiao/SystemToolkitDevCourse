@@ -1,0 +1,96 @@
+===== 原始输出: ls /nonexistent /tmp =====
+ls: cannot access '/nonexistent': No such file or directory
+/tmp:
+add_github_link.py
+commit_all.sh
+compile_final.sh
+(...)
+
+===== stdout->stdout.txt, stderr->stderr.txt =====
+--- stdout.txt ---
+/tmp:
+add_github_link.py
+commit_all.sh
+compile_final.sh
+compile_reports.sh
+compile_reports2.sh
+e4.py
+ex_batch1.py
+final_commit_push.sh
+fix.sh
+fix_week4.py
+fix_week4_tab.py
+hsperfdata_root
+recompile_pdfs.sh
+snap-private-tmp
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-chrony.service-cBEwUW
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-lm-sensors.service-tFbqax
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-polkit.service-bNvunl
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-power-profiles-daemon.service-KBeytM
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-switcheroo-control.service-cysM55
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-systemd-logind.service-mp07nd
+verify_pdfs.sh
+week1_compile.log
+week2_compile.log
+week3_compile.log
+week4_compile.log
+--- stderr.txt ---
+ls: cannot access '/nonexistent': No such file or directory
+
+===== 合并到同一文件 (&>) =====
+ls: cannot access '/nonexistent': No such file or directory
+/tmp:
+add_github_link.py
+commit_all.sh
+compile_final.sh
+compile_reports.sh
+compile_reports2.sh
+e4.py
+ex_batch1.py
+final_commit_push.sh
+fix.sh
+fix_week4.py
+fix_week4_tab.py
+hsperfdata_root
+recompile_pdfs.sh
+snap-private-tmp
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-chrony.service-cBEwUW
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-lm-sensors.service-tFbqax
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-polkit.service-bNvunl
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-power-profiles-daemon.service-KBeytM
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-switcheroo-control.service-cysM55
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-systemd-logind.service-mp07nd
+verify_pdfs.sh
+week1_compile.log
+week2_compile.log
+week3_compile.log
+week4_compile.log
+
+===== 合并到同一文件 (> file 2>&1) =====
+ls: cannot access '/nonexistent': No such file or directory
+/tmp:
+add_github_link.py
+commit_all.sh
+compile_final.sh
+compile_reports.sh
+compile_reports2.sh
+e4.py
+ex_batch1.py
+final_commit_push.sh
+fix.sh
+fix_week4.py
+fix_week4_tab.py
+hsperfdata_root
+recompile_pdfs.sh
+snap-private-tmp
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-chrony.service-cBEwUW
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-lm-sensors.service-tFbqax
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-polkit.service-bNvunl
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-power-profiles-daemon.service-KBeytM
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-switcheroo-control.service-cysM55
+systemd-private-b193a86e067942be8cde2ad0bf9489e1-systemd-logind.service-mp07nd
+verify_pdfs.sh
+week1_compile.log
+week2_compile.log
+week3_compile.log
+week4_compile.log
