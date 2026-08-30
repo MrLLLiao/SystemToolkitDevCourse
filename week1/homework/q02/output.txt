@@ -1,0 +1,31 @@
+===== 所有文件 =====
+a.txt
+b.txt
+c.txt
+file1.txt
+file2.txt
+fileA.txt
+my file.txt
+other.md
+
+===== ls *.txt (匹配所有 .txt 文件) =====
+a.txt
+b.txt
+c.txt
+file1.txt
+file2.txt
+fileA.txt
+my file.txt
+
+===== ls file?.txt (? 匹配单个字符) =====
+file1.txt
+file2.txt
+fileA.txt
+
+===== ls {a,b,c}.txt (花括号展开) =====
+a.txt
+b.txt
+c.txt
+
+===== ls *.txt 不匹配 other.md =====
+other.md
