@@ -1,0 +1,17 @@
+===== 双引号: 允许变量展开和命令替换 =====
+Hello, world! Today is Sunday
+
+===== 单引号: 完全字面量，不展开任何内容 =====
+Hello, $NAME! Today is $(date +%A)
+
+===== ANSI-C 引号 $'...': 解释转义序列 =====
+line1
+line2	indented☃
+
+===== 输出同时包含字面量 $ 、 ! 和换行符的字符串 =====
+Cost: $100! Discount: 50%
+Buy now!
+
+===== 用 ANSI-C 引号输出含 $ ! 换行的字符串 =====
+Price: $9.99!
+Limited offer!
