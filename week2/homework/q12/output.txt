@@ -4,16 +4,15 @@ tmux 3.6
 ===== 2. 启动分离会话 demo, 在其中执行命令 =====
 
 ===== 3. 新建第二个窗口并水平分屏 =====
-can't find pane: 2
 
 ===== 4. 会话/窗口/面板结构 =====
-demo: 2 windows (created Mon Aug 31 11:11:13 2026)
+demo: 2 windows (created Mon Aug 31 11:11:43 2026)
 ---
 0: bash- (1 panes) [120x30] [layout a8fd,120x30,0,0,0] @0
 1: code* (2 panes) [120x30] [layout 70a0,120x30,0,0{60x30,0,0,1,59x30,61,0,2}] @1 (active)
 ---
-0: [60x30] [history 0/2000, 1575 bytes] %1
-1: [59x30] [history 0/2000, 2670 bytes] %2 (active)
+0: [60x30] [history 0/2000, 2475 bytes] %1
+1: [59x30] [history 0/2000, 2445 bytes] %2 (active)
 
 ===== 5. 抓取窗口0的屏幕内容 (capture-pane) =====
 echo "hello from tmux pane"
@@ -40,5 +39,4 @@ status-bg   = status-bg black
 mode-keys   = mode-keys vi
 
 ===== 8. 清理, 确认无残留会话 =====
-server exited unexpectedly
 (无会话, 清理完成)

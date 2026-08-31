@@ -18,8 +18,8 @@ echo ""
 echo "===== 3. 新建第二个窗口并水平分屏 ====="
 tmux new-window -t demo -n code
 tmux split-window -t demo:1 -h
-tmux send-keys -t demo:1.1 'echo "left pane: $(hostname)"' Enter
-tmux send-keys -t demo:1.2 'echo "right pane"' Enter
+tmux send-keys -t demo:1.0 'echo "left pane: $(hostname)"' Enter
+tmux send-keys -t demo:1.1 'echo "right pane"' Enter
 sleep 0.5
 echo ""
 
@@ -49,4 +49,4 @@ echo "mode-keys   = $(tmux show-window-options -g mode-keys)"
 tmux kill-session -t demo2
 echo ""
 echo "===== 8. 清理, 确认无残留会话 ====="
-tmux list-sessions 2>&1 || echo "(无会话, 清理完成)"
+tmux list-sessions 2>/dev/null || echo "(无会话, 清理完成)"
