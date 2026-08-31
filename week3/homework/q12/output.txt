@@ -1,0 +1,45 @@
+############ 1. 构建沙箱镜像 ############
+#10 resolving provenance for metadata file
+#10 DONE 0.0s
+ q12-agent-sandbox:latest  Built
+
+############ 2. 运行沙箱（隔离边界验证） ############
+sandbox-1  | === [q12] YOLO 沙箱演示：验证隔离边界已生效 ===
+sandbox-1  | 当前用户: agent (uid 1000)
+sandbox-1  | 
+sandbox-1  | [1] 能力集 CapEff（cap_drop:ALL → 应为 0000000000000000）
+sandbox-1  | CapEff:	0000000000000000
+sandbox-1  |     → CapEff 全 0 = 无任何 Linux 能力：mount/chown/setuid 等特权操作在本容器内根本不可用
+sandbox-1  | 
+sandbox-1  | [2] NoNewPrivs（no-new-privileges:true → 应为 1）
+sandbox-1  | NoNewPrivs:	1
+sandbox-1  | 
+sandbox-1  | [3] 根文件系统挂载（read_only:true → / 为 ro）
+sandbox-1  | overlay / overlay ro,relatime,lowerdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/159/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/156/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/155/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/154/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/91/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/90/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/89/fs:/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/88/fs,upperdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/160/fs,workdir=/var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/160/work 0 0
+sandbox-1  | 
+sandbox-1  | [4] 尝试向系统路径写文件（应被拒）
+sandbox-1  |   ✓ 无法写 /etc（read_only + 非root）
+sandbox-1  | 
+sandbox-1  | [5] 网络接口（network_mode:none → 仅 lo，无 eth0）
+sandbox-1  |   接口列表: lo 
+sandbox-1  |   ✓ 无法联网（外联/外泄被隔离）
+sandbox-1  | 
+sandbox-1  | [6] 进程上限（pids_limit:64）
+sandbox-1  | 64
+sandbox-1  | 
+sandbox-1  | [7] 内存上限（mem_limit:256m）
+sandbox-1  | 268435456
+sandbox-1  | 
+sandbox-1  | [8] 在唯一可写区正常干活
+sandbox-1  | hello from yolo agent (pid 1)
+sandbox-1  | 
+sandbox-1  | === 演示结束：宿主毫发无损；agent 无能力、根只读、断网、进程/内存受限，仅能在 /work/workdir 写盘 ===
+[Ksandbox-1 exited with code 0
+
+############ 3. 清理 ############
+   Container q12-sandbox-1  Stopping
+   Container q12-sandbox-1  Stopped
+   Container q12-sandbox-1  Removing
+   Container q12-sandbox-1  Removed
+   Volume q12_workdir  Removing
+   Volume q12_workdir  Removed
