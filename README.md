@@ -69,7 +69,19 @@ week3/                    # 第3周
   q11/                    # 协作材料改写
   q12/                    # 线性回归训练循环
   report/                 # 第3周实验报告
-  homework/               # 课后练习（q01-q10）
+  homework/               # 课后练习
+    q01/                  # venv/printenv 环境对比与 deactivate 原理
+    q02/                  # 创建 Python 包 + pyproject.toml + lockfile
+    q03/                  # Docker 构建 Missing Semester 官网
+    q04/                  # Dockerfile + docker-compose + Redis 缓存
+    q05/                  # 发布包到 TestPyPI + 镜像推 ghcr.io（本地等效演示）
+    q06/                  # GitHub Pages 静态站（本地 worktree 演示）
+    q07/                  # 手动/AI补全/内联聊天/智能体 四种编码方式对比
+    q08/                  # 用智能体浏览陌生代码库（tenacity）
+    q09/                  # 氛围编程——零手写代码的小应用
+    q10/                  # AGENTS.md + Skill + 子智能体
+    q11/                  # Markdown 无序列表正则（命令行工具只读完成）
+    q12/                  # YOLO 模式容器隔离沙箱
 week4/                    # 第4周
   q13/                    # 本地质量门禁
   q14/                    # Make增量构建
