@@ -1,18 +1,28 @@
 # 练习15: git stash 工作流实验
 
 ## 实验步骤
-1. 克隆/复制仓库，修改 README.md 添加一行
+1. 复制 missing-semester 仓库，修改 README.md 添加一行
 2. `git stash`：暂存未提交的修改，工作区恢复干净
 3. `git log --all --oneline`：观察提交历史
 4. `git stash pop`：恢复之前暂存的修改
 
-## 结果
-- **git stash 后**：工作区变干净，`git status` 无输出；修改被保存到 stash 栈中（`git stash list` 显示 `stash@{0}`）
-- **git log --all --oneline**：提交历史**不包含** stash 的修改——stash 不产生新 commit（它创建的是 stash 对象，不在 `git log` 显示的常规提交历史中，但可通过 `git log --all --oneline --grep=WIP` 或 `git fsck` 找到）
-- **git stash pop**：恢复工作区的修改，stash 从栈中弹出
+## 结果（基于实际输出）
+- **git stash 后**：工作区变干净，`git status` 无输出；修改被保存到 stash 栈中，提示 `Saved working directory and index state WIP on master: fea9192 ...`
+- **git log --all --oneline**：**会**显示 stash 相关的两个临时提交：
+  ```
+  e9eec99 WIP on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+  07f739e index on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+  fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+  ...
+  ```
+  因为 `--all` 会遍历所有引用（含 `refs/stash`），所以 stash 的 WIP/index 提交也可见。若用不带 `--all` 的 `git log` 则看不到。
+- **git stash list**：显示 `stash@{0}: WIP on master: ...`
+- **git stash pop**：恢复工作区修改（` M README.md`），并输出 `Dropped refs/stash@{0}`，stash 从栈中弹出
 
-## git log --all --oneline 看不到 stash 的原因
-`git log` 默认只遍历提交（commit）的引用链。stash 本质是挂在 reflog 上的临时 commit，不属于任何分支的提交历史，所以 `git log --all --oneline` 不显示。`git log --all --oneline --graph --decorate` 会显示 `refs/stash`。
+## stash 的原理
+- stash 把未提交的工作目录和暂存区修改打包成临时 commit，挂在 `refs/stash` 引用下
+- 它不属于任何分支的常规历史，但可以通过 `--all`（遍历所有引用）或 `--grep=WIP` 看到
+- 切换分支 / pull 时 stash 可以"随身携带"未提交修改
 
 ## stash 有什么用？
 | 场景 | 说明 |

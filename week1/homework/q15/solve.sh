@@ -3,7 +3,7 @@
 set -e
 # 使用已克隆的 missing-semester 仓库做实验（复制一份避免污染原仓库）
 rm -rf /tmp/stashdemo
-cp -r /tmp/ms /tmp/stashdemo
+cp -r /root/ms /tmp/stashdemo
 cd /tmp/stashdemo
 echo "===== 实验前：工作区干净 ====="
 git status --short

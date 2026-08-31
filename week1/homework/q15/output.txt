@@ -1,1 +1,38 @@
-cp: cannot stat '/tmp/ms': No such file or directory
+===== 实验前：工作区干净 =====
+(无输出表示干净)
+
+===== 1. 修改一个已有文件 (README.md) =====
+修改后的 git status:
+ M README.md
+
+===== 2. 执行 git stash =====
+Saved working directory and index state WIP on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+stash 后 git status:
+(无输出表示工作区恢复干净)
+
+===== 3. 查看 git log --all --oneline =====
+e9eec99 WIP on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+07f739e index on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+7343431 docs: fix uv lockfile Docker example
+853e0ea Merge branch 'tufailrizvi-debug/fixing_typo'
+
+===== 4. 查看 stash 列表 =====
+stash@{0}: WIP on master: fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+
+===== 5. 执行 git stash pop 恢复修改 =====
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (e9eec99fbefdf2d0ae0bfda0ee0382d429ec8a30)
+pop 后 git status:
+ M README.md
+
+===== 6. 确认修改还在 =====
+# My local experiment
