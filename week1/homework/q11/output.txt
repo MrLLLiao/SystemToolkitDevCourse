@@ -1,0 +1,37 @@
+===== 创建文件并提交 =====
+提交完成
+
+===== 查看 HEAD 指向的 commit 对象 =====
+f09c2cf25c74748cbbd51759b8c0fdd9bb0b293a
+commit 对象 hash: f09c2cf25c74748cbbd51759b8c0fdd9bb0b293a
+对象类型: commit
+
+===== 查看 commit 对象内容 (git cat-file -p) =====
+tree 4b92b5c47cc44c064ce74df450f01c3eb376bc68
+author root <root@DESKTOP-STH5L31.localdomain> 1788144005 +0800
+committer root <root@DESKTOP-STH5L31.localdomain> 1788144005 +0800
+
+first commit: add greeting and notes
+
+===== 获取 commit 指向的 tree =====
+tree 对象 hash: 4b92b5c47cc44c064ce74df450f01c3eb376bc68
+对象类型: tree
+
+===== 查看 tree 对象内容 =====
+100644 blob 8d0e41234f24b6da002d962a26c2495ea16a425f	greeting.txt
+100644 blob a29bdeb434d874c9b1d8969c40c42161b03fafdc	notes.txt
+
+===== 查看 blob 对象 =====
+greeting.txt 的 blob hash: 8d0e41234f24b6da002d962a26c2495ea16a425f
+对象类型: blob
+blob 内容: hello git
+
+===== 修改文件后再次提交，观察对象 =====
+28f1642 second commit: update greeting
+f09c2cf first commit: add greeting and notes
+
+===== 每个 commit 有唯一的 hash（内容寻址） =====
+28f1642f5c58909efc1ca98530cb4e9a5282bf92
+tree d64f4b1cfb7b068a4dc527758b612258c4ad05ca
+parent f09c2cf25c74748cbbd51759b8c0fdd9bb0b293a
+author root <root@DESKTOP-STH5L31.localdomain> 1788144005 +0800
