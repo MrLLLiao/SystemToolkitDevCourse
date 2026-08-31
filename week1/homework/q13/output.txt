@@ -1,0 +1,6 @@
+===== README.md 的完整提交历史 =====
+
+===== 最后修改 README.md 的提交 (git log -1 -- README.md) =====
+
+===== 简洁输出：hash + 作者 + 邮箱 + 日期 + 消息 =====
+solve.sh: line 3: cd: /tmp/ms: No such file or directory
