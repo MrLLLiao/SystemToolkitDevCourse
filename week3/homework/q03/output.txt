@@ -1,0 +1,45 @@
+############ 0. 前置：Docker 环境 ############
+Docker version 29.1.3, build 29.1.3-0ubuntu4.1
+Docker Compose version 2.40.3+ds1-0ubuntu1
+
+############ 1. 克隆 Missing Semester 仓库 ############
+仓库已存在: /root/week3_hw/missing-semester（跳过克隆）
+--- Dockerfile 与 compose 文件 ---
+-rw-r--r-- 1 root root 225 Aug 31 11:47 /root/week3_hw/missing-semester/Dockerfile
+-rw-r--r-- 1 root root 194 Aug 31 11:47 /root/week3_hw/missing-semester/docker-compose.yml
+
+############ 2. 本机网络适配：docker-compose.override.yml ############
+已写入（构建期通过 Windows 宿主代理拉取 alpine 包与 Ruby gems）
+
+############ 3. docker compose up -d --build ############
+#13 DONE 0.0s
+ missing-semester:latest  Built
+ Container missing-semester-server-1  Recreate
+ Container missing-semester-server-1  Recreated
+ Container missing-semester-server-1  Starting
+ Container missing-semester-server-1  Started
+NAME                        IMAGE                     COMMAND                  SERVICE   CREATED        STATUS                  PORTS
+missing-semester-server-1   missing-semester:latest   "bundle exec jekyll …"   server    1 second ago   Up Less than a second   0.0.0.0:4000->4000/tcp, [::]:4000->4000/tcp
+
+############ 4. 等待并验证网站 ############
+>>> HTTP 200（等待 2s 后就绪）
+GET / => 200
+--- 首页正文片段 ---
+<h1 class="title">The Missing Semester of Your CS Education</h1>
+<h2 class="subtitle">2026</h2>
+<h1 id="syllabus">Syllabus</h1>
+--- 首页标题 ---
+--- 课程相关链接 ---
+href="https://lobste.rs/s/q4ykw7/missing_semester_your_cs_education_2026"
+href="https://www.reddit.com/r/learnprogramming/comments/1r93yk6/the_missing_semester_of_your_cs_education_2026/"
+--- 容器日志 ---
+server-1  | [33m                    Auto-regeneration may not work on some Windows versions.[0m
+server-1  | [33m                    Please see: https://github.com/Microsoft/BashOnWindows/issues/216[0m
+server-1  | [33m                    If it does not work, please upgrade Bash on Windows or run Jekyll with --no-watch.[0m
+server-1  |  Auto-regeneration: enabled for '/app'
+server-1  |     Server address: http://0.0.0.0:4000
+server-1  |   Server running... press ctrl-c to stop.
+
+############ 5. 停止并清理 ############
+ Network missing-semester_default  Removing
+ Network missing-semester_default  Removed

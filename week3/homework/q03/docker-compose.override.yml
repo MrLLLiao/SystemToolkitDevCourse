@@ -1,0 +1,12 @@
+# 本机网络适配层（未改动官方 docker-compose.yml / Dockerfile）
+# 背景：本机 Docker Hub 直连不稳（daemon 已配代理），且构建容器内经 fake-IP DNS
+# 访问 alpine CDN 时 apk 失败，因此给构建阶段注入宿主代理作为 build-args。
+services:
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        HTTP_PROXY: http://172.26.224.1:7890
+        HTTPS_PROXY: http://172.26.224.1:7890
+        NO_PROXY: localhost,127.0.0.1
