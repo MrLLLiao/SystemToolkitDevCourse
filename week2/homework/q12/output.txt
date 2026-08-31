@@ -1,0 +1,44 @@
+===== 1. tmux 版本 =====
+tmux 3.6
+
+===== 2. 启动分离会话 demo, 在其中执行命令 =====
+
+===== 3. 新建第二个窗口并水平分屏 =====
+can't find pane: 2
+
+===== 4. 会话/窗口/面板结构 =====
+demo: 2 windows (created Mon Aug 31 11:11:13 2026)
+---
+0: bash- (1 panes) [120x30] [layout a8fd,120x30,0,0,0] @0
+1: code* (2 panes) [120x30] [layout 70a0,120x30,0,0{60x30,0,0,1,59x30,61,0,2}] @1 (active)
+---
+0: [60x30] [history 0/2000, 1575 bytes] %1
+1: [59x30] [history 0/2000, 2670 bytes] %2 (active)
+
+===== 5. 抓取窗口0的屏幕内容 (capture-pane) =====
+echo "hello from tmux pane"
+pwd
+ls
+root@DESKTOP-STH5L31:~/gitRepo/SystemToolkitDevCourse/week2/homework/q12# echo "hello from tmux pane"
+hello from tmux pane
+root@DESKTOP-STH5L31:~/gitRepo/SystemToolkitDevCourse/week2/homework/q12# pwd
+/root/gitRepo/SystemToolkitDevCourse/week2/homework/q12
+root@DESKTOP-STH5L31:~/gitRepo/SystemToolkitDevCourse/week2/homework/q12# ls
+ANSWER.md  output.txt  solve.sh  tmux.conf
+root@DESKTOP-STH5L31:~/gitRepo/SystemToolkitDevCourse/week2/homework/q12#
+
+
+
+===== 6. 关闭 demo 会话, 演示定制配置 =====
+已关闭 demo
+
+===== 7. 用本目录 tmux.conf 启动新会话, 验证定制生效 =====
+prefix      = prefix C-a
+mouse       = mouse on
+base-index  = base-index 1
+status-bg   = status-bg black
+mode-keys   = mode-keys vi
+
+===== 8. 清理, 确认无残留会话 =====
+server exited unexpectedly
+(无会话, 清理完成)
