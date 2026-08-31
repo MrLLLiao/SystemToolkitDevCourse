@@ -1,0 +1,42 @@
+===== 1. dotfiles 目录内容 =====
+total 32
+drwxr-xr-x 2 root root 4096 Aug 31 11:09 .
+drwxr-xr-x 3 root root 4096 Aug 31 11:09 ..
+-rwxr-xr-x 1 root root  168 Aug 31 11:09 .bash_aliases
+-rwxr-xr-x 1 root root  288 Aug 31 11:09 .bashrc
+-rwxr-xr-x 1 root root   96 Aug 31 11:09 .gitconfig
+-rwxr-xr-x 1 root root   91 Aug 31 11:09 .vimrc
+-rwxr-xr-x 1 root root 1403 Aug 31 11:09 README.md
+-rwxr-xr-x 1 root root  748 Aug 31 11:09 install.sh
+
+===== 2. 用全新 HOME 模拟新机器, 运行 install.sh =====
+链接 /tmp/fakehome.MCvUWl/.bashrc -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.bashrc
+链接 /tmp/fakehome.MCvUWl/.bash_aliases -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.bash_aliases
+链接 /tmp/fakehome.MCvUWl/.gitconfig -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.gitconfig
+链接 /tmp/fakehome.MCvUWl/.vimrc -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.vimrc
+
+安装完成。旧配置备份目录: /tmp/fakehome.MCvUWl/.dotfiles_backup_20260831110951
+
+===== 3. 验证新 HOME 下生成的符号链接 =====
+lrwxrwxrwx  1 root root  78 Aug 31 11:09 .bash_aliases -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.bash_aliases
+lrwxrwxrwx  1 root root  72 Aug 31 11:09 .bashrc -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.bashrc
+lrwxrwxrwx  1 root root  75 Aug 31 11:09 .gitconfig -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.gitconfig
+lrwxrwxrwx  1 root root  71 Aug 31 11:09 .vimrc -> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q11/dotfiles/.vimrc
+
+===== 4. 验证 .bashrc 中的 PS1 定制 =====
+2:# 1) 自定义 PS1: 绿色用户名@主机名 : 蓝色当前目录 $
+3:PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ '
+
+===== 5. 验证别名文件内容 =====
+# 常用别名 (由 q10 的 history 分析得出)
+alias dc='cd'
+alias ll='ls -la'
+alias gs='git status'
+alias ga='git add'
+alias gcm='git commit -m'
+alias py='python3'
+
+===== 6. 在子 shell 中 source 新 .bashrc, 确认 PS1 生效 =====
+PS1 已设置为: \[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ 
+
+===== 7. 版本控制状态: 本目录已被 git 跟踪 =====

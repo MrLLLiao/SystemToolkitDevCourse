@@ -1,0 +1,7 @@
+[user]
+	name = MrLLLiao
+	email = liaoshijia@example.com
+[color]
+	ui = auto
+[core]
+	editor = vim
