@@ -1,0 +1,91 @@
+===== 仓库基本信息 =====
+origin	https://github.com/MrLLLiao/SystemToolkitDevCourse.git (fetch)
+origin	https://github.com/MrLLLiao/SystemToolkitDevCourse.git (push)
+* main
+  remotes/origin/main
+
+===== 提交总数 =====
+39
+
+===== 版本历史图 (git log --all --graph --decorate --oneline) =====
+* 9d67426 (HEAD -> main) feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
+* 16c60f6 (origin/main) docs: 更新README反映week1-4目录结构和homework练习
+* 1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
+* f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
+* b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
+* 4a78f71 feat(homework-q07): chmod+x可执行权限实验，对比前后ls -l输出和直接运行行为差异
+* 42f3cb1 feat(homework-q06): 使用test -f和[ -f ]编写文件存在性检查脚本，测试四种情况
+* d294d77 feat(homework-q05): 退出状态$?与&&||条件执行，实现目录不存在时才创建的一行命令
+* f69734c feat(homework-q04): stdin/stdout/stderr标准流重定向实验，分别和合并重定向到文件
+* 51f7402 feat(homework-q03): 单引号双引号ANSI-C引号区别实验，输出含$!和换行的字面量字符串
+* d9cd055 feat(homework-q02): glob通配符模式匹配实验，创建测试文件验证*?和花括号展开
+* 0eedd71 feat(homework-q01): ls -l长格式输出与权限位10字符含义解析，编写脚本运行并记录结果
+* 7a30b4f chore(homework): 在week1-4中创建homework/q01-q10目录结构
+* af118fd chore:
+* 0e6eaf6 chore(reorg): 移除空reports目录
+* 2d3f679 chore(reorg): 将q13-q16和第4周实验报告移入week4目录
+* 0cf8e73 chore(reorg): 将q09-q12和第3周实验报告移入week3目录
+* 9161096 chore(reorg): 将q05-q08和第2周实验报告移入week2目录
+* b8b6a6c chore(reorg): 将q01-q04和第1周实验报告移入week1目录
+* 2e35579 feat(reports): 在实验报告中添加GitHub仓库链接，修复week4编译错误并重新编译PDF
+* 2aebcb9 feat(reports): 添加四周实验报告的tex源文件和编译后的PDF
+* 8f7cd84 fix: 补充被gitignore忽略的实验日志文件，修正.gitignore规则
+* 7bed049 feat(q16): 修复并交付陌生的小型工具仓库，临时破坏验证失败后修复，编写Makefile并计算SHA-256
+* f1508cc feat(q15): 把本地API数据转换为可读报告，使用curl和jq筛选排序并生成summary.md
+* 4fbd0f0 feat(q14): 让Make只重建真正受影响的产物，编写Makefile定义依赖链和增量构建
+* 5eb7419 feat(q13): 建立可执行的本地质量门禁，配置ruff和pytest，编写check.sh一键检查
+* d3c2026 feat(q12): 修复可复现的线性回归训练循环，补全zero_grad、backward、step和评估模式
+* 03a3d6e feat(q11): 把无法处理的协作材料改成可执行信息，重写Issue、提交信息和评审意见
+* 11aee56 feat(q10): 让编程智能体进入可验证的修复循环，添加空白姓名测试并智能体修复SystemExit(2)
+* 0fd193d feat(q09): 从源码构建并在干净环境安装Wheel，创建greetlab包并生成wheel验证安装
+* e676fe1 feat(q08): 先测量再优化慢速词频程序，使用cProfile分析并将列表替换为集合优化
+* 9d210eb feat(q07): 用调试器定位归并排序缺陷，修复right[i]为right[j]，添加pytest测试
+* 30eebac feat(q06): 语义重构与本地开发反馈，使用LSP重命名total_price为calculate_total，ruff和pytest通过
+* 67876cc feat(q05): 控制可清理的后台任务，使用trap捕获SIGTERM并验证cleanup.log
+* 6e24f5e feat(q04): 修复并构建一页LaTeX技术说明，添加公式和表格的交叉引用，生成PDF
+* 71a9cf9 feat(q03): 制造并解决Git合并冲突，创建feature-a和feature-b分支，解决冲突保留mode=safe并添加note=reviewed
+* 4ddee07 feat(q02): 随机访问日志统计，编写analyze.sh使用awk管道统计5xx路径和平均延迟
+* de7944a feat(q01): 含空格文件名的批量整理，创建input目录结构并复制到work目录，设置权限和生成inventory
+* f757ed5 chore:
+
+===== 简化图形 (最近30条) =====
+* 9d67426 feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
+* 16c60f6 docs: 更新README反映week1-4目录结构和homework练习
+* 1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
+* f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
+* b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
+* 4a78f71 feat(homework-q07): chmod+x可执行权限实验，对比前后ls -l输出和直接运行行为差异
+* 42f3cb1 feat(homework-q06): 使用test -f和[ -f ]编写文件存在性检查脚本，测试四种情况
+* d294d77 feat(homework-q05): 退出状态$?与&&||条件执行，实现目录不存在时才创建的一行命令
+* f69734c feat(homework-q04): stdin/stdout/stderr标准流重定向实验，分别和合并重定向到文件
+* 51f7402 feat(homework-q03): 单引号双引号ANSI-C引号区别实验，输出含$!和换行的字面量字符串
+* d9cd055 feat(homework-q02): glob通配符模式匹配实验，创建测试文件验证*?和花括号展开
+* 0eedd71 feat(homework-q01): ls -l长格式输出与权限位10字符含义解析，编写脚本运行并记录结果
+* 7a30b4f chore(homework): 在week1-4中创建homework/q01-q10目录结构
+* af118fd chore:
+* 0e6eaf6 chore(reorg): 移除空reports目录
+* 2d3f679 chore(reorg): 将q13-q16和第4周实验报告移入week4目录
+* 0cf8e73 chore(reorg): 将q09-q12和第3周实验报告移入week3目录
+* 9161096 chore(reorg): 将q05-q08和第2周实验报告移入week2目录
+* b8b6a6c chore(reorg): 将q01-q04和第1周实验报告移入week1目录
+* 2e35579 feat(reports): 在实验报告中添加GitHub仓库链接，修复week4编译错误并重新编译PDF
+* 2aebcb9 feat(reports): 添加四周实验报告的tex源文件和编译后的PDF
+* 8f7cd84 fix: 补充被gitignore忽略的实验日志文件，修正.gitignore规则
+* 7bed049 feat(q16): 修复并交付陌生的小型工具仓库，临时破坏验证失败后修复，编写Makefile并计算SHA-256
+* f1508cc feat(q15): 把本地API数据转换为可读报告，使用curl和jq筛选排序并生成summary.md
+* 4fbd0f0 feat(q14): 让Make只重建真正受影响的产物，编写Makefile定义依赖链和增量构建
+* 5eb7419 feat(q13): 建立可执行的本地质量门禁，配置ruff和pytest，编写check.sh一键检查
+* d3c2026 feat(q12): 修复可复现的线性回归训练循环，补全zero_grad、backward、step和评估模式
+* 03a3d6e feat(q11): 把无法处理的协作材料改成可执行信息，重写Issue、提交信息和评审意见
+* 11aee56 feat(q10): 让编程智能体进入可验证的修复循环，添加空白姓名测试并智能体修复SystemExit(2)
+* 0fd193d feat(q09): 从源码构建并在干净环境安装Wheel，创建greetlab包并生成wheel验证安装
+
+===== 当前分支最近的提交 =====
+9d67426 feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
+16c60f6 docs: 更新README反映week1-4目录结构和homework练习
+1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
+f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
+b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
+Cloning into '/tmp/ms'...
+fatal: unable to access 'https://github.com/missing-semester/missing-semester/': Failed to connect to github.com port 443 via 127.0.0.1 after 0 ms: Could not connect to server
+solve.sh: line 8: cd: /tmp/ms: No such file or directory
