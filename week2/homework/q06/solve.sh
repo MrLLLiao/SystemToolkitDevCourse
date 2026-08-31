@@ -6,17 +6,17 @@ echo "===== 1. 启动 sleep 10000 后台任务 ====="
 sleep 10000 &
 PID=$!
 echo "shell 拿到的 pid=$PID"
-ps -o pid,stat,cmd -p "$PID" | tail -1
+COLUMNS=0 ps -o pid,stat,cmd -p "$PID" | tail -1
 echo ""
 
 echo "===== 2. 模拟 Ctrl-Z (SIGTSTP): 挂起任务 ====="
 kill -STOP "$PID"
-ps -o pid,stat,cmd -p "$PID" | tail -1     # 状态 T 表示 stopped
+COLUMNS=0 ps -o pid,stat,cmd -p "$PID" | tail -1     # 状态 T 表示 stopped
 echo ""
 
 echo "===== 3. 模拟 bg (SIGCONT): 让任务在后台继续运行 ====="
 kill -CONT "$PID"
-ps -o pid,stat,cmd -p "$PID" | tail -1     # 状态 S 表示恢复运行
+COLUMNS=0 ps -o pid,stat,cmd -p "$PID" | tail -1     # 状态 S 表示恢复运行
 echo ""
 
 echo "===== 4. 用 pgrep -af 查找 pid, 不手动输入 ====="
