@@ -1,0 +1,20 @@
+===== 1. 启动后台任务: sleep 3 & =====
+后台任务 pid=788
+
+===== 2. 说明: 若不 wait, ls 会立即执行, 与 sleep 并行 =====
+(对比可自行把 wait 注释掉再跑一次)
+
+===== 3. wait $PID 阻塞, 直到该后台任务结束 =====
+wait 返回退出码: 0 (即后台任务的退出码)
+等待耗时: 3 秒 (≈ sleep 时长, 说明 ls 确实等到了后台任务结束)
+
+===== 4. 等待结束后才执行 ls =====
+total 20
+drwxr-xr-x  2 root root 4096 Aug 31 11:06 .
+drwxr-xr-x 12 root root 4096 Aug 30 17:05 ..
+-rwxr-xr-x  1 root root 1495 Aug 31 11:06 ANSWER.md
+-rw-r--r--  1 root root  432 Aug 31 11:06 output.txt
+-rwxr-xr-x  1 root root 1071 Aug 31 11:06 solve.sh
+
+===== 5. 对比: 不带参数 wait 会等待所有后台子进程 =====
+不带参数 wait 耗时: 2 秒 (≈ 最慢的子任务 2 秒)
