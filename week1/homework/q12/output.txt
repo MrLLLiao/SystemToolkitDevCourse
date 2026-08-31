@@ -1,91 +1,1271 @@
 ===== 仓库基本信息 =====
-origin	https://github.com/MrLLLiao/SystemToolkitDevCourse.git (fetch)
-origin	https://github.com/MrLLLiao/SystemToolkitDevCourse.git (push)
-* main
-  remotes/origin/main
+origin	https://github.com/missing-semester/missing-semester (fetch)
+origin	https://github.com/missing-semester/missing-semester (push)
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/another-shuffle
+  remotes/origin/beyond-the-code
+  remotes/origin/jjgo/cli-lecture
+  remotes/origin/jjgo/ship-fix
+  remotes/origin/master
 
 ===== 提交总数 =====
-39
+856
 
 ===== 版本历史图 (git log --all --graph --decorate --oneline) =====
-* 9d67426 (HEAD -> main) feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
-* 16c60f6 (origin/main) docs: 更新README反映week1-4目录结构和homework练习
-* 1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
-* f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
-* b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
-* 4a78f71 feat(homework-q07): chmod+x可执行权限实验，对比前后ls -l输出和直接运行行为差异
-* 42f3cb1 feat(homework-q06): 使用test -f和[ -f ]编写文件存在性检查脚本，测试四种情况
-* d294d77 feat(homework-q05): 退出状态$?与&&||条件执行，实现目录不存在时才创建的一行命令
-* f69734c feat(homework-q04): stdin/stdout/stderr标准流重定向实验，分别和合并重定向到文件
-* 51f7402 feat(homework-q03): 单引号双引号ANSI-C引号区别实验，输出含$!和换行的字面量字符串
-* d9cd055 feat(homework-q02): glob通配符模式匹配实验，创建测试文件验证*?和花括号展开
-* 0eedd71 feat(homework-q01): ls -l长格式输出与权限位10字符含义解析，编写脚本运行并记录结果
-* 7a30b4f chore(homework): 在week1-4中创建homework/q01-q10目录结构
-* af118fd chore:
-* 0e6eaf6 chore(reorg): 移除空reports目录
-* 2d3f679 chore(reorg): 将q13-q16和第4周实验报告移入week4目录
-* 0cf8e73 chore(reorg): 将q09-q12和第3周实验报告移入week3目录
-* 9161096 chore(reorg): 将q05-q08和第2周实验报告移入week2目录
-* b8b6a6c chore(reorg): 将q01-q04和第1周实验报告移入week1目录
-* 2e35579 feat(reports): 在实验报告中添加GitHub仓库链接，修复week4编译错误并重新编译PDF
-* 2aebcb9 feat(reports): 添加四周实验报告的tex源文件和编译后的PDF
-* 8f7cd84 fix: 补充被gitignore忽略的实验日志文件，修正.gitignore规则
-* 7bed049 feat(q16): 修复并交付陌生的小型工具仓库，临时破坏验证失败后修复，编写Makefile并计算SHA-256
-* f1508cc feat(q15): 把本地API数据转换为可读报告，使用curl和jq筛选排序并生成summary.md
-* 4fbd0f0 feat(q14): 让Make只重建真正受影响的产物，编写Makefile定义依赖链和增量构建
-* 5eb7419 feat(q13): 建立可执行的本地质量门禁，配置ruff和pytest，编写check.sh一键检查
-* d3c2026 feat(q12): 修复可复现的线性回归训练循环，补全zero_grad、backward、step和评估模式
-* 03a3d6e feat(q11): 把无法处理的协作材料改成可执行信息，重写Issue、提交信息和评审意见
-* 11aee56 feat(q10): 让编程智能体进入可验证的修复循环，添加空白姓名测试并智能体修复SystemExit(2)
-* 0fd193d feat(q09): 从源码构建并在干净环境安装Wheel，创建greetlab包并生成wheel验证安装
-* e676fe1 feat(q08): 先测量再优化慢速词频程序，使用cProfile分析并将列表替换为集合优化
-* 9d210eb feat(q07): 用调试器定位归并排序缺陷，修复right[i]为right[j]，添加pytest测试
-* 30eebac feat(q06): 语义重构与本地开发反馈，使用LSP重命名total_price为calculate_total，ruff和pytest通过
-* 67876cc feat(q05): 控制可清理的后台任务，使用trap捕获SIGTERM并验证cleanup.log
-* 6e24f5e feat(q04): 修复并构建一页LaTeX技术说明，添加公式和表格的交叉引用，生成PDF
-* 71a9cf9 feat(q03): 制造并解决Git合并冲突，创建feature-a和feature-b分支，解决冲突保留mode=safe并添加note=reviewed
-* 4ddee07 feat(q02): 随机访问日志统计，编写analyze.sh使用awk管道统计5xx路径和平均延迟
-* de7944a feat(q01): 含空格文件名的批量整理，创建input目录结构并复制到work目录，设置权限和生成inventory
-* f757ed5 chore:
+*   fea9192 (HEAD -> master, origin/master, origin/HEAD) Merge branch 'oiahoon/docs/fix-uv-lock-example'
+|\  
+| * 7343431 docs: fix uv lockfile Docker example
+|/  
+*   853e0ea Merge branch 'tufailrizvi-debug/fixing_typo'
+|\  
+| * 2df4a16 Fix typos in SSH-related documentation
+|/  
+*   adaebe3 Merge branch 'ariuxklc/master'
+|\  
+| * de7ac78 Add Mongolian translation link
+|/  
+* 575bf9f Bump actions/checkout from 6 to 7 in the actions group (#385)
+*   f71203e Merge pull request #382 from JasonLuo-4/fix-lecture2-typos
+|\  
+| * 8b51b99 Fix two typos in Lecture 2 exercises
+|/  
+*   def3237 Merge branch 'arteen1000/patch-1'
+|\  
+| * 495a201 Change wording slightly in code quality lecture
+|/  
+* 49f676c Tweak text about license
+*   5a501b8 Merge branch 'itiquette/fix/url-change'
+|\  
+| * 4f14f71 Switch to new url for swedish
+* | 46e3a32 Fix broken link
+|/  
+*   600ade0 Merge branch 'huntagain2008/huntagain2008-patc...'
+|\  
+| * 376db0b Fix the greet CLI tool
+* |   c714fda Merge branch 'dylantran035/fix-shell-typo'
+|\ \  
+| * | 57626a3 Fix confusing phrasing in shell.md
+| |/  
+* |   3822e28 Merge branch 'huntagain2008/huntagain2008-patc...'
+|\ \  
+| |/  
+|/|   
+| * 19bcac2 Switch to `docker compose`
+|/  
+*   6df931a Merge branch 'xiqi98/fix-typo'
+|\  
+| * 2c86ace Fix typo: remove duplicate "the" in beyond-code.md
+|/  
+* e54cf48 Highlight special topics from previous years
+* 5d8455a Clean up exercises sections in 2019 lectures
+* c7c076a Align 2026 page with earlier years
+* 3cec16a Fix styling
+* 00186f7 Add dates to 2019 lectures
+*   a7c73c2 Merge branch 'janderssonse/feat/swedish-translation-link'
+|\  
+| * a53c5a8 Add a link to full Swedish translation
+|/  
+* 76e4bb9 Fix typo
+* 77b301d Remove duplicate "the"
+* 8e58237 Make language name more clear
+* 4066e0b Note that cargo-flamegraph works for any binary
+*   dabb2c4 Merge branch 'AndreaFan123/feat/add_traditiona...'
+|\  
+| * d01d3bc Add traditional Chinese link
+|/  
+* 0627815 Add link
+* 59393cf Explain deprecation of reusable prompts
+* 8f58e5e Fix broken link
+* f100f1a Fix ignored link
+*   4ac38bb Merge branch 'prasannakotyal/fix-docker-link-2026'
+|\  
+| * 29042c0 Fix Docker link
+* |   7cf68b6 Merge branch 'prasannakotyal/add-kannada-link-clean'
+|\ \  
+| |/  
+|/|   
+| * ea1b26a Add Kannada link
+|/  
+* 1fd85bc Sort translations
+*   46a43e6 Merge branch 'marttp/patch-1'
+|\  
+| * c15dc71 Add Thai translation site
+|/  
+* a58e2a3 Remove link
+* 4d5972c Remove link
+* d000fea Add link
+* 3396ca2 Fix link
+* 4d5a598 Add link
+* 53060b3 Fix
+* a56838a Fix
+* 58decb7 Add link
+* fb496bf Add link
+* 2b4ddc1 Add some links
+* ac18a61 Update homepage for release
+* ab8e72e Add videos
+* b7b1ca9 Fix broken link
+*   6b2af87 Merge branch 'Emmet-Ray/master'
+|\  
+| * ad5c09c Fix typos and improve clarity in course docs
+|/  
+* 3ae25af Update ignore list
+* b7139d1 Update rec to BorgBase
+* e9ba75d Update lecture release date
+* 87af8cd Elaborate on single vs double-quoted strings
+* a9805ee Add YouTube video
+* ae3b909 Remove under construction notice
+* dd040bf Add Panopto link
+* 5c8db3e Fix links
+* 3dc6962 Remove private link
+* 0ccd11d Add note on mocking
+* a2b53b7 Update list of files excluded from build
+* bcdc6c1 Be clearer about LLM use
+* a271c33 Add note
+* bdd663a Add notes for code quality lecture
+* 2281797 Add Panopto link
+* 89e3862 Fix typos
+* f6b5c30 LLM disclosure
+* ce7dc56 Add Beyond the Code lecture notes
+* 3f3ad48 Move Q&A link to the top
+* e54cf4f Add Panopto link
+* 1e931c4 Add another example of using agents in this repo
+* fd5b556 Tweak prompt
+* f1e1c41 Fix typos in agentic coding lecture
+* f552b55 Revise lecture on agentic coding
+* aaf88a4 Add Panopto link
+*   e49b40a (origin/jjgo/ship-fix) Merge branch 'master' into jjgo/ship-fix
+|\  
+| * 6f9d261 Fix sidenote positioning when resizing from mobile
+| * bd84047 nits in shipping code
+| *   8f298ea Merge pull request #348 from missing-semester/anish-shipping-code-edits
+| |\  
+| | * c477101 Make misc edits to Shipping Code
+| |/  
+| * 1f4809c Add videos for lectures 2 and 3
+| * a2c99c3 Replace video
+| * 440f6d7 Fix whitespace errors
+* | ba92598 Merge
+* | e95bcce minor
+|/  
+*   45aca2d Merge branch 'jjgo/ship'
+|\  
+| * 74fc5cb Final touches
+| * 9ba8407 update
+| * b095946 Initial draft
+* | f21758c Fix headings
+* | 870cc66 Fix CI
+* | 12c2d5a Fix handling of internal domains
+* | 9e2c633 Publish video for lecture 1
+* | ce252ed Add page descriptions
+* | e4b4043 Add thumbnails for 2020 lectures
+* | 3c3e1d4 Add thumbnails for 2026 lectures
+* | 20e84bc Add site-level thumbnail
+* | 8bd89da Simplify title
+* | 1cb4a4d Tweak title
+* | cc158d8 Update acks for this year
+* | 8806fc5 Fix broken links
+* | 77948a6 Switch to HTTPS
+* | 1af8a38 Fix heading level
+* | 9841e67 Fix whitespace errors
+* | 751fdf5 Add exercise on merge conflicts
+* | 76fe826 Add link to Panopto
+| | * 6b7a086 (origin/beyond-the-code) follow-ups from Jose
+| | * 9296ac2 typos
+| | * a420f06 add exercises
+| | * 08d2150 LLMs for writing commit messages
+| | * 417cd98 Add Beyond the Code lecture notes
+| |/  
+|/|   
+* | fb6cc27 Make Code Quality share with Q&A instead (#347)
+* | 71f7bce Correct AGENTS.md filename
+|/  
+| * 5d0f16f (origin/another-shuffle) Make Code Quality share with Q&A instead
+|/  
+* 4ef33bd Hide registration form
+* 13b9781 Tweak exercise
+* d5a572d Update Git commands
+* 1657561 Tweak notes
+* 15e6be2 Remove commented-out stuff
+* 000ea7b Initialize from 2020 notes
+* fbada54 Add two more Panopto links
+* 958e2d6 some post-lecture tweaks
+* e7b097c Add Tufte-style sidenotes and epigraphs (#345)
+* 1d6ee0e Write notes for Debugging & Profiling
+* d4d9bfc Add AGENT.md (#346)
+* e103384 Avoid blockquote for non-quotes
+* 9e801a8 Reorganize schedule for IAP 2026 (#344)
+* 8957e1e fix some broken links
+* 4bd0243 Upgrade legacy http links to https (#343)
+* f72062f Make some small additions
+* 50e63cc Update exercises for coding agents
+* a10ddac Add note on limitations of regex
+* 4d3fc04 Add mention of reusable prompts
+* 0e66867 Process feedback from Jose
+* 6db9579 Add Panopto link
+*   0b64770 Merge branch 'jjgo/cli-lecture'
+|\  
+| * aad608b (origin/jjgo/cli-lecture) details
+* | b76f13e Merge branch 'jjgo/cli-lecture'
+|\| 
+| * c230547 fix
+| * 09d1ddf Some more changes
+| *   19d5af9 Merge branch 'jjgo/cli-lecture' of github.com-jjgo:missing-semester/missing-semester into jjgo/cli-lecture
+| |\  
+| | * edbab0a nits
+| * | 761e66d refinement
+| |/  
+| * 2043929 typos
+| * 167de92 more
+| * ce1ce08 Initial draft
+* | 20fa6ea Add Panopto link
+* | 6d1de2d Tweak exercise
+|/  
+* 5623bee Make small tweaks to lec 1 notes
+* 974c3b0 Add draft of development environment lecture
+* f92a25a tweaks to topic 1
+* 59bea33 Note from N
+* 7ab1596 Update logistics info
+* 39e810a mention agentic workflow tips
+*   7bbaafc Merge branch 'ft-ayush/fix-typo'
+|\  
+| * 404d298 Fix typo
+* | e38b7b6 Update EditorConfig
+|/  
+* d71d794 2026 course intro
+* b0336e3 Add exercises to 2026 Topic 1
+* 30d0b86 First draft of 2026 Topic 1
+* 5409ced some more cli notes
+* 9547b6c Add note
+* f21658a Process feedback from Jose
+* c90ef2d Update link to SIPB IAP 2019
+* b7046cb Add note
+* b65aacb Update plan based on feedback from Jon
+* 8f33cae Improve "under construction" colors for light mode
+* 057a79f Flesh out AI paragraph
+* 0eed4da Highlight 'under construction'
+* e02bbf1 Bump Ruby version in CI
+* 8719796 Add link to OSSU Discord
+* 2458d04 Remove unnecessary section
+*   291e1ef Merge branch '2026'
+|\  
+| * 9bf59b9 Add registration link
+| * becf200 Add 2026 syllabus
+| * 6f8bbc1 Tweak wording
+| * 3ca43d2 Add "under construction" notice
+| * df8f081 Update URL
+| * 0a5b596 Update acks
+| * a73c01f Add publicity and acks to 2020 page
+| * fe814c5 Add acknowledgments for 2019 offering
+| * cafbf9e Switch to Ruby 3
+| * bd39cfc Clean up CSS
+| * d28fa62 Add support for alternative video links
+| * 819c29a Add styling for blockquote
+| * 1f791cf Remove unused subtitle
+| * 1d883e3 Remove obsolete attribute
+* | 775f518 Bump actions/checkout from 5 to 6 in the actions group (#341)
+|/  
+* 6c7bab6 Fixed Typo (#334)
+* 8c63acb Updated akward sentence in _2019/backups.md (#335)
+* f76be3c found a typo in the "Aliases" section of command-line.md (#333)
+*   b571279 Merge pull request #332 from muhammadqasim-10xe/fixed-typo-mistake
+|\  
+| * d8bb7e2 replaced 'the' with 'to' on line 248
+|/  
+* 7e0d646 Bump actions/checkout from 4 to 5 in the actions group (#325)
+* 13d8b77 Remove broken link
+*   9d912cc Merge branch 'andrewgarmon/patch-1'
+|\  
+| * 573df0c Reword confusing sentence in shell-tools.md
+|/  
+*   dc6f276 Merge branch 'Utsav202004/fix-find-convert-example'
+|\  
+| * 96398dd Use 'magick' instead of 'convert'
+* |   a5d073a Merge pull request #319 from Utsav202004/fix-pseudocode-error-handling
+|\ \  
+| * | 4d744c0 Fix: Clarify git checkout behavior regarding detached HEAD
+| |/  
+* |   2e55561 Merge pull request #321 from Utsav202004/fix-typo
+|\ \  
+| |/  
+|/|   
+| * 97ce81f Fix: Add missing Quote
+|/  
+* b5534a5 Address link checker failures
+* c023295 Merge pull request #314 from claimiris/typo-found
+* 985b161 Merge pull request #309 from johnsmith0x3f/fix/remove-unnecessary-flags
+* 0ec6a47 Clarify global gitignore file must be manually created (#312)
+* 676acd3 Add suggestion and link for mapping <ESC> (#305)
+*   5428051 Merge branch 'georgestephenson/fix-typos-editors-data-wrangling'
+|\  
+| * dce9525 Fix Typos in Editors and Data Wrangling Lecture Notes
+|/  
+* f61bdc1 Update CI status URLs
+* 457308e Add autohotkey.com to ignore list
+*   204fb93 Merge branch 'terryhsuu/update-py-call-graph-link'
+|\  
+| * 3f76dcd Update python call graph link
+|/  
+* ac0d946 typo
+* 159d10a fix typos (#292)
+* 74fcc37 Fix CI
+*   937d447 Merge pull request #287 from j-s-ashley/ci/add-dependabot
+|\  
+| * d77be4f Add dependabot
+* | ff4683c PyPi → PyPI (Python Package Index) (#290)
+* |   55f6fec Merge branch 'BakirGracic/add-images'
+|\ \  
+| |/  
+|/|   
+| * 2efec7c Add inaccessible remote images to repo
+|/  
+* b22a4ec Fix URLs
+* 51cbbe8 Upgrade to actions/checkout@v4
+*   5a3ba0d Merge branch 'sujaudd1n/patch-1'
+|\  
+| * 7893dda Add link for Bengali translation.
+|/  
+* 0747cba Replace dead link
+* fa3a499 Ignore Stack Overflow subdomains
+* 85c545b Ignore Stack Exchange
+* b50af6a Update link
+*   d38f585 Merge branch 'alexandr-gnrk/update-jupyter-binding'
+|\  
+| * f600f32 Update Vim binding for Jupyter
+|/  
+* 2253e4e Switch recommended app to Rectangle
+* 18ee93c Ignore Reddit URLs when checking links
+*   2ab1b78 Merge branch 'alkock/master'
+|\  
+| * 98d90f8 added german translation
+|/  
+* bd75a78 Fix broken links
+*   7330a25 Merge branch 'fipachu/git-aliases'
+|\  
+| * 6fc734b Add more useful overview of Git aliases
+|/  
+*   f45234f Merge branch 'Nikitaz1410/patch-2'
+|\  
+| * d2a8a4d Typos corrected in program-introspection.md
+* |   4a74a0e Merge branch 'Nikitaz1410/patch-1'
+|\ \  
+| |/  
+|/|   
+| * c589f46 Typo corrected Line 135
+|/  
+*   be41e2d Merge branch 'furkanakkurt1335/patch-1'
+|\  
+| * 20a9fc7 Fix typo ; Update shell-tools.md
+|/  
+* 66b2878 Fix escaping
+* d8990e1 fix typo/correct grammar (#239)
+* 5c43e55 Fix typo (`locahost` to `localhost`) (#238)
+* 3a5651a No more trixy :'(
+* c38222b Update URL
+* d966a21 Add link to Persian translation
+* f06d145 Ignore hash for GitHub URLs
+* 5eca88a Replace deleted Gist with Wayback Machine URL
+* 5b66ebb Add site to ignore list
+* 5c36d38 Update URL
+* c4512e3 Fix broken links
+*   2f2df39 Merge branch 'detonator-man/typo-fix'
+|\  
+| * 1872bc2 Fix typo on 2019 editors page
+* | ee1d4de Debugging and Profiling corrections (#215)
+* | 7e50e21 Switch broken link to archive.org link
+|/  
+* 4ffec43 Clarify that we don't want spam PRs
+* 77bcf98 Add more informative 404 page
+*   37b1718 Merge branch 'mattrighetti/master'
+|\  
+| * f79848c Add link to Italian translation
+|/  
+*   129c9ce Merge branch 'missing-semester-ar/master'
+|\  
+| * 5ae4b0e Merge pull request #1 from missing-semester-ar/missing-semester-ar
+|/| 
+| * 7ba1f85 Added link to Arabic language Translation
+|/  
+* 0496624 Take note of some more URLs
+*   dc609e6 Merge branch 'YesSeri/master'
+|\  
+| * 6e7a157 Text inside pre is visible while printing as pdf.
+|/  
+*   fffa09e Merge branch 'findyy99/master'
+|\  
+| * 230b01c change `.zhistory` to `.zsh_history`
+|/  
+* ac83824 Clean up title
+* 1320c3c Switch to GA4
+*   3cc8149 Merge branch 'TianyiFranklinWang/master'
+|\  
+| * 823a800 Fix a wrong usage of ! within double quotation marks
+|/  
+* d31a890 Switch to archived copy of image from deleted blog
+* 0d12f56 Simplify build
+* f6055dc Switch to ruby/setup-ruby and pin ruby version
+* 7a46c08 Replace dead website with archive.org link
+* 065486e Update link
+* 0fe2b6c Fix HTML validation
+* af7fe83 Switch to proof-html v2
+*   55b03a8 Merge branch 'migatt/feature-print-urls'
+|\  
+| * 007b996 Show URL only after external links
+| * ecd3b68 Show URL after Link in Print View
+* | 9ef9db7 Add Docker setup for easier development
+|/  
+*   c82102d Merge branch 's-kupek/master'
+|\  
+| * ad1ba94 FIX: Spelling mistakes,'content' should be plural and verb adjusted accordingly
+|/  
+* bf4d406 Upgrade to actions/checkout@v3
+* 840ef3a Update link
+* dadbc2d Update link
+*   606f5cd Merge branch 'Hgrpoiu/master'
+|\  
+| * 5c7e0c2 Modified command-line for readability
+|/  
+*   ec82c3a Merge branch 'UnrealApex/patch-1'
+|\  
+| * c893d1c Use key that is a better equivalent to s
+|/  
+* e6fc555 Fix broken links
+*   488e636 Merge pull request #187 from HtwoO/patch-1
+|\  
+| * 90fe0de private key path is expected after -i of ssh client
+|/  
+*   9837d16 Merge branch 'soulrrrrr/soulr'
+|\  
+| * d8991dc Add <br> at the 'About the class' section. The 'Questions' title will move to the next line.
+|/  
+*   b2c02c8 Merge pull request #178 from ChathurGudesa/master
+|\  
+| * ee10e35 Remove incorrectly used comma
+|/  
+*   0601c2c Merge branch 'weeklies/use--no-echo'
+|\  
+| * 3f331b0 Use --no-echo for R option
+|/  
+*   c2f9535 Merge pull request #172 from chapmanjacobd/patch-1
+|\  
+| * e4383e7 Add Alt+.
+* | 8cc6609 Add ignored URL
+* |   ad4d14f Merge pull request #173 from UranusITS/master
+|\ \  
+| |/  
+|/|   
+| * ece6aca fix typo
+|/  
+*   f62424f Merge branch 'ds2606/master'
+|\  
+| * 63a2509 fixed checked nav-bar block styling on media query
+|/  
+* 4c80259 Add a really nice strace zine resource (#168)
+*   676944b Merge branch 'jtomori/fix-kill-cmd'
+|\  
+| * 09991f3 Fix kill parameter to list signals.
+|/  
+* 0c9c024 Fix broken links
+* 731a005 Fix broken link
+* 839adce Add a github tutorial on how to contribute (#162)
+*   2d1a558 Merge branch 'kumatheworld/fix-numbering'
+|\  
+| * 157dd68 Fix list numbering
+|/  
+*   602282f Merge branch 'LemurP/master'
+|\  
+| * 154aa87 Add link to Git alias section in exercise
+|/  
+* 4dfc254 Bump dependencies
+* 8010724 Separate build and links status
+*   9c84071 Merge branch 'nullmight/fix-key-type'
+|\  
+| * b63aa80 Fix key type in tutorial
+|/  
+*   7623daf Merge branch 'FabienRoger/add-plural'
+|\  
+| * c741a74 Add plural to parent variable
+|/  
+* 7ec9677 Update broken links
+* e6ab30e Use Vimium description from the GitHub repo
+*   34c2210 Merge branch 'deeperlearner/patch-1'
+|\  
+| * 0fe7898 Update qa.md
+| * 2fa0547 Add a browser plugin that I found it is useful.
+|/  
+* 47824a1 Point broken link to archive.org version
+* 68c4121 Tweak wording
+*   24ab363 Merge branch 'mnahinkhan/patch-1'
+|\  
+| * d39f432 Clarify how cat functions
+* | 84a858b docs: delete backquote in bash script (#146)
+|/  
+* cd51340 Ignore another flaky URL
+*   5355b73 Merge branch 'kartikeytewari/master'
+|\  
+| * f423e18 change _2019/security.md
+|/  
+*   5e047f5 Merge branch 'oliver/patch-1'
+|\  
+| * abe50b3 add missing close parenthesis
+|/  
+*   37f9662 Merge pull request #141 from blentz100/course-overview
+|\  
+| * 1ab4a89 changed fancyful to fanciful
+|/  
+* 448e173 Ignore another site that is flaky in CI
+*   499b94c Merge branch 'rareloto/update-commandline-rephrase'
+|\  
+| * a0963cd Minor rephrasing on Job control Exercise 2
+|/  
+* c0c7843 Update link
+*   91fb22c Merge branch 'letian-jiang/improve-version-control'
+|\  
+| * 61c1e2a add two punctuation marks
+|/  
+*   bd5d105 Merge branch 'waynezhangw/tinyFix'
+|\  
+| * 3b19969 add two period mark at Exercises 2 of version-control
+|/  
+* b3920a2 Add link to explanation of BSD vs GNU coreutils
+* e14d2d3 fixed a couple of typos (#130)
+*   2a80a1d Merge branch 'GCrispino/patch-1'
+|\  
+| * 61493ff Fix sentence in last command line exercise
+|/  
+*   91f747e Merge branch 'sburris0/patch-1'
+|\  
+| * 6a48623 Add link to big list of vim-like software
+|/  
+* 979376f Restore Mark Janssen's cipherlist/ssldecoder
+* 6c54f9e Update link
+* e8a8781 Add visual mode key bindings (#122)
+*   c4085d1 Merge branch 'soramichi/fix_metaprogramming'
+|\  
+| * 7743827 fix foo.dat to data.dat
+|/  
+*   08954ad Merge branch 'matsui528/add_japanese_translation'
+|\  
+| * c8c4ca4 Added the link to Japanese translation
+|/  
+*   e42fef2 Merge branch 'm-naumann/patch-2'
+|\  
+| * 00366e1 Update qa.md: Add url to firefox screenshots
+|/  
+*   b728af7 Merge branch 'm-naumann/patch-1'
+|\  
+| * 7909cc5 Update debugging-profiling.md: minor reordering
+|/  
+* b74d88b Add link to Russian translation
+*   7735587 Merge branch 'WWRS/WWRS-lineprofiler-pyutils'
+|\  
+| * a6b0e39 Update line_profiler link
+|/  
+* 58959df Make homepage schedule show year
+* 9834f92 Update dependencies
+* 7580d27 Remove rate limit and add GitHub token
+* 79d143f Switch to proof-html action
+*   ec18441 Merge branch 'mattrohr/fix-shell-notes'
+|\  
+| * 8ac569b Clarify default shell history behavior
+|/  
+* 958e0a4 Disable CI
+* f6c4244 Switch to GitHub Actions
+* 9dc244b Add instructions to install GraphViz as a prereq (#108)
+*   c0cddda Merge branch 'kljensen/patch-1'
+|\  
+| * 9839276 Add pass and 1password as example password managers
+* |   3011acd Merge branch 'puneetlath/fix-git-merge-diagram'
+|\ \  
+| |/  
+|/|   
+| * fbdee8b fix background style on merging branches diagram
+|/  
+*   92c7e20 Merge branch 'abatishchev/patch-1' into master
+|\  
+| * ec4db15 Update potpourri.md
+|/  
+* c9ded80 Update youtube-dl URL
+* fe13049 Update data-wrangling.md -- clarify wording (#101)
+*   99a969d Merge branch 'zacheller/patch-1' into master
+|\  
+| * a7ec38f Update data-wrangling.md
+|/  
+*   d25671d Merge branch 'holdmygithub/master' into master
+|\  
+| * cc5da83 fixed a small typo at the end of this file
+|/  
+*   c51602d Merge branch 'DAngelo-S/master' into master
+|\  
+| * b7de27c add the Portuguese version
+|/  
+*   8a27115 Merge branch 'exercise-solutions' into master
+|\  
+| * c3ae0e4 Add note on (lack of) solutions to exercises
+* | 90dfe09 Add note on BSD vs GNU coreutils
+|/  
+* 03b4dae Update htop link
+* 721717e Update dependencies
+* 0cf3d52 Add note about Windows and cmd.exe/PowerShell
+*   c277c7f Merge branch 'marcoroganovic/patch-01' into master
+|\  
+| * 2ff7d70 Add translation URL for Serbian language
+|/  
+*   da9aa9f Merge branch 'Ersmes/check-repo' into master
+|\  
+| * d258763 Fixed typo in debugging lecture
+|/  
+* 363d782 Fix broken link
+* 349c259 Add note on intentional spelling
+* da9e658 Update for terminals without 24-bit color support
+*   be93a85 Merge branch 'sreevamsiy/patch-1'
+|\  
+| * 4eb6f4f Update command-line.md
+|/  
+*   df730d8 Merge pull request #83 from hoxiea/master
+|\  
+| * fc64d66 Remove incorrect/ambiguous 'separated'
+| * 071f533 Search and replace link to Vim lecture, minor R correction and Rust uninstall clarification per Jon review
+* |   6f060d3 Merge branch 'AnhTuDo1998/patch-1'
+|\ \  
+| * | e3bb9fe Added Vietnamese translation site link
+|/ /  
+* |   cba370f Merge branch 'bewuethr/q-and-a-typos'
+|\ \  
+| * | 204e922 Fix typos in Q&A lecture notes
+|/ /  
+* |   cc4e618 Merge branch 'bewuethr/potpourri-typos'
+|\ \  
+| * | e754dd0 Fix TOC entry for hammerspoon
+|/ /  
+* |   655a7a0 Merge branch 'bewuethr/potpourri-typos'
+|\ \  
+| * | 70336a5 Fix typo in potpourri lecture
+* | |   87046b5 Merge branch 'bewuethr/typo'
+|\ \ \  
+| |/ /  
+|/| |   
+| * | db94dba Fix typo in security notes
+|/ /  
+* |   e53ec74 Merge branch 'zhangke91/fix-typo'
+|\ \  
+| * | de828a1 Fix the typo s/clone/fork/ in exercise section in version-control.md.
+|/ /  
+* |   b92ae97 Merge branch 'bewuethr/typo'
+|\ \  
+| * | d387971 Fix typo
+|/ /  
+* | 8ab8905 Ignore another flaky website
+* | 0c5de33 Fix ignoring of userstyles.org
+* |   1c514b1 Merge pull request #72 from wesleyjr01/ignore
+|\ \  
+| * | 7133222 Possibly wrong GitHub Pages Hyperlink
+| * | 2394906 Add '__pycache__/' to .gitignore, in the lectures you used some python scripts, it may generate  a __pycache__ folder and submit it to remote.
+* | |   bfd906c Merge pull request #73 from wesleyjr01/pages
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 77107e7 Possibly wrong GitHubPages hyperlink.
+|/ /  
+* |   8cd6b67 Merge branch 'shiyoung77/master'
+|\ \  
+| * | 0c7efdb Fix description of "git diff <filename>"
+|/ /  
+* |   0bf2dbf Merge pull request #70 from TanayB11/patch-1
+|\ \  
+| * | 4cd8612 Fix grammar
+| * | 9a5a9e0 Remove macOS example
+| * |   519de2d Merge pull request #1 from TanayB11/patch-2
+| |\ \  
+| | * | ed249f4 Phrasing tweak
+| |/ /  
+|/| |   
+| * | ebe91a4 Examples and syntactic changes
+|/ /  
+* |   04348dc Merge branch 'missing-semester-esp/master'
+|\ \  
+| * | 1bffc37 Add Spanish translation link
+|/ /  
+* |   9dc27f3 Merge branch 'bewuethr/typos-lecture-2'
+|\ \  
+| * | c56cb05 Fix "find -path" command to match comment
+| * | cc71a6a Add small fixes for shell tools lecture
+* | | d9d4fd6 Clean up translations list
+* | |   1a908f2 Merge branch 'missing-semester-zh-Hant/master'
+|\ \ \  
+| * | | 2ae89b2 Add Traditional Chinese translation link
+|/ / /  
+* | |   5eb2556 Merge branch 'GzuPark/patch-1'
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 3784fbd Add the translate to Korean version
+|/ /  
+* |   47c053d Merge pull request #62 from hasantezcan/master
+|\ \  
+| * | 43d6d7f Add Turkish translation
+|/ /  
+* | a9009f9 Update workaround
+* | 961a9fa Add flaky website to ignore list
+* | e00caaa Update broken link
+* | 3bce0ca Add workaround for expired root cert issue in CI
+* |   3bb18d5 Merge pull request #61 from huangrt01/master
+|\ \  
+| * | a3a7490 TYPO in version-control.md
+|/ /  
+* |   ada2d99 Merge branch 'LennartNeukamm/patch-1'
+|\ \  
+| * | f53530a Fixed typo
+|/ /  
+* | 2c91a00 Add link to short-circuiting operators
+* | 923ff93 Fix typo
+|/  
+*   d735389 Merge branch 'hoxiea/edits'
+|\  
+| * b5951d8 Capitalize Vim mode names, brief note about how to start vimtutor
+|/  
+* ba98ccf Add workaround for incomplete certificate chains
+* 6291488 Switch man page links to HTTPS
+*   a71aac3 Merge branch 'etcadinfinitum/commit-messages'
+|\  
+| * 368c003 Add second link for commit message best practices
+|/  
+* dee513e Fix shebang technicality
+*   97b2d44 Merge pull request #52 from hoxiea/patch-2
+|\  
+| * 03d63e2 Minor cleanup
+|/  
+* cb7f8ca Fix shallow clone command
+*   7da0daf Merge branch 'hoxiea/patch-1'
+|\  
+| * a3e6073 Pluralize "curriculum"
+* |   f25737f Merge branch 'bpshaver/master'
+|\ \  
+| |/  
+|/|   
+| * 282313b Update metaprogramming.md
+|/  
+* 96c4d86 Fix kramdown inferring incorrect smart quote
+* 7807484 Add retrying in case of random network failures
+*   d1a8e99 Merge pull request #48 from kdmayer/fixTypo
+|\  
+| * 3f45d8e First character after colons to lower-case.
+* | d53fd50 Add note on lectures being self-contained
+* | 472b516 Add translations section to homepage
+* | be33938 Fix broken fragments
+* | 10c47e9 Allow images to be served over HTTP
+* | e4acca0 Ignore some URLs that don't seem to work with htmlproofer
+* | 9b2d860 Add build status to README
+* | fa309f9 Fix Travis CI build
+* | 5e6ad9f Fix broken links
+* | 60b245a Remove links to defunct r/hackertools subreddit
+* | 45937e7 Add Travis CI config
+* |   1926cd7 Merge branch 'devanshrj/master'
+|\ \  
+| * | 396ba17 Typo in command-line.md
+|/ /  
+* |   2c39f81 Merge pull request #44 from Corbin-A/master
+|\ \  
+| * | 8e1b9d6 Small formatting and grammar tweaks
+|/ /  
+* | 8c5a2d8 Remove use of "said"
+* |   5c0097c Merge pull request #42 from FMJansen/patch-1
+|\ \  
+| * | f5401d0 fix typo
+|/ /  
+* |   f05f6e3 Merge branch 'EthanVieira/master'
+|\ \  
+| * | e1e9297 fix small typo
+|/ /  
+* |   036b488 Merge pull request #40 from StevenMaude/correct-shell-parameter-term
+|\ \  
+| * | 4fd5ac3 Describe the shell parameter $! correctly
+|/ /  
+* |   64017d4 Merge pull request #38 from connorrose/typo
+|\ \  
+| * | b32ad5c Fix exercise autonumber and indents
+|/ /  
+* |   d364ef3 Merge branch 'nishkakotian/my_branch'
+|\ \  
+| * | 49a8040 Removed a letter
+|/ /  
+* |   d4dabb7 Merge pull request #35 from eldarkurtic/master
+|\ \  
+| * | 370beb1 Fix 'the math' -> 'math'
+| * | 9d61ea6 Fix small typos
+|/ /  
+* |   112f7d4 Merge branch 'krishnakumarg1984/krishna_fix_typos'
+|\ \  
+| * | a1a133a adds a number of typo fixes to markdown files in the project repo
+|/ /  
+* | 5b86715 Typo; fixes #33
+* |   d6b1988 Merge pull request #32 from carpdiem/patch-3
+|\ \  
+| |/  
+|/|   
+| * 5158694 Change link to cProfile from python2 -> python3 docs
+|/  
+* 5172ab6 Fix mixup between RemoteForward and LocalForward
+*   3fb62b0 Merge pull request #30 from carpdiem/patch-2
+|\  
+| * 8397324 link to info about ssh-agent is incorrect
+|/  
+*   143625b Merge pull request #29 from lepasq/typo-shell-lecture
+|\  
+| * a0e32fe Fix typo inside shell-tools.md
+|/  
+*   cb458ee Merge pull request #27 from rbnsl/master
+|\  
+| * 2598a38 Added prettier as example of a code formatter
+* | 505f7c4 Fix typo
+|/  
+*   d1107eb Merge branch 'J16053/patch-1'
+|\  
+| * 53cd428 Fix typo in example
+|/  
+*   9d87979 Merge branch 'lcynot/patch-1'
+|\  
+| * bc6aefb fix the typo
+|/  
+*   98e673d Merge pull request #23 from Mendoza2909/typo
+|\  
+| * 12b8808 Typo
+|/  
+*   b73b4a2 Merge branch 'carpdiem/patch-1'
+|\  
+| * 075b313 incorrect link in exercises: terminal multiplexer
+|/  
+*   55b5a2e Merge pull request #21 from piaoliangkb/master
+|\  
+| * 4febdca fix typo
+|/  
+*   cb2b3c8 Merge pull request #20 from missing-semester/dependabot/bundler/nokogiri-1.10.8
+|\  
+| * ed37dcc Bump nokogiri from 1.10.7 to 1.10.8
+|/  
+* 541accb Add more info on shebang
+* a8cf2e7 Clarify `./semester` vs `sh semester` in exercises
+* a7592dd Clarify lack of sysfs on macOS/Windows
+* de99a39 Fix numbering
+*   dd235b8 Merge branch 'cthogg/patch-1'
+|\  
+| * dfa763c fix: typo
+|/  
+*   c7391e7 Merge pull request #18 from krohnta/master
+|\  
+| * 0fcfe45 Fix wrong option in alias example
+|/  
+* e2b716f Add link to website license page
+* 9389a07 Clarify that license covers source code
+* 3366d22 Tweak license wording
+* c3b3045 Add license and guidelines
+*   a6bed6a Merge branch 'manzt/patch-1'
+|\  
+| * d5d76e2 tmux -t is illegal option
+|/  
+* b7dd961 Fix typos in example
+* 0819942 Add note on SHA-1 being broken
+*   0c3327f Merge branch 'benlk/patch-1'
+|\  
+| * 84e9163 Enlarge upon the sha1sum examples
+|/  
+*   90961b5 Merge branch 'nixon/master'
+|\  
+| * 8e49a02 fix typo
+|/  
+*   2a2d4f2 Merge branch 'StTronn/versionundo'
+|\  
+| * f3f3237 Add undo commands
+|/  
+*   c875d6d Merge branch 'SeanPedersen/patch-2'
+|\  
+| * b0bfd9f Update security.md
+|/  
+* 78e0840 Note about 'real' metaprogramming meaning (#9)
+* 55e5c81 Add note about ZSH
+*   a70337c Merge branch 'm-laniakea/patch-1'
+|\  
+| * 761f0d8 command-line.md/Aliases: Fix top-10 history script
+|/  
+* 1f3faa9 Fix incorrect use of WebKit in Q&A notes
+* 5e9ddfb Add captions for lecture 2
+* de1ecd2 Fix link
+* 2f1b015 Add redirect
+* c99c9bd Update links
+* 1ada0a5 Update description
+* 6362f6b Remove irrelevant info now that class is over
+* 1fb1b4e Do editing pass on Q&A lecture
+* 18753d2 Add subtitles for lectures 5,7,11
+* df9b925 Add notes for Q&A lecture
+* b62d1ce Fix "video coming soon" on /about/ page
+* 39bd31d Add Q&A video
+* d030d5d Publish potpourri video
+* 209f3cc New videos for all lectures
+*   47c8699 Merge pull request #6 from martinplattnr/patch-1
+|\  
+| * df77502 Update potpourri.md
+|/  
+* 5da3fe5 Remove stray 1
+*   a5467b5 Merge branch 'master' of github.com:missing-semester/missing-semester
+|\  
+| * 8b7f440 Nicer page break points
+* | 7278613 Add TOC for Potpourri
+|/  
+* d06a8c3 Jose's Potpourri
+* a613122 adjustments
+* d868af3 Remove names from lecture notes
+* a1ac1bc Add my content
+* 09fafb8 jon potpourri
+* 4d923c3 Add basic structure to potpourri
+* 19f761e Add resources
+* d64d0d8 Clarify that hash is deterministic
+* 5eb737f Add some more case studies
+* ca57678 Add notes for security lecture
+* 81f0ba5 Release lec7 and lec8 videos
+* 40f3193 Sane print styles
+* 2ea7c75 Release meta
+* 7ec0843 Python 2/3, testing, and exercises
+* a438dac Rename lecture notes
+* ce7fa62 First draft of meta
+* 230f88b Minor edits to debug/profiling
+* bdbebf8 Toggle lecture visibility
+* 4d0ae52 Remove hanging TODO
+* e9157be Finish debug-profile lecture notes
+* 3122df0 Some writing edits to debug-profile
+* aede032 Finish cProfile example
+* 70a546c Finish exercises for debug and profiling
+* 0bb9a2f Fix insane date value scheme
+* 6542028 Fix missing EOF newline
+* 3e50d54 Add command-line lecture video
+* c301018 Move
+* 66db6c4 Process Jon and Jose's feedback
+* 26a9d54 Fix typo
+* 8ffa46e Add text on immutable objects and mutable refs
+* 0a59ae7 Flip direction of arrows for consistency
+* 72dc429 Fix typo
+* 6922089 Reformat exercise
+* bfedd4d Add notes for version control lecture
+*   eee6580 Merge branch 'cnord/zsh-autosuggest'
+|\  
+| * 7b4d317 Clarify zsh history search vs. autosuggestions in shell tools lecture
+|/  
+* 26a8147 Update notes for command line environment
+* d31a732 Add more tmux notes to command-line
+* b92de5a Unready debugging and profiling notes
+* 6c6dfa9 Minor fix in shell-tools notes
+* c6504d7 First draft of debugging-profiling notes
+* 69024df Draft of command line environment notes
+* 56ecc34 Remove link to Hacker Tools from README
+* 67660c2 Rewrite exercise possible ambiguity
+* 583a678 Fix aspect ratio
+* 5a27b14 Link to YouTube playlist
+* f20b8b4 Fix
+* 4aa7224 Add lecture videos
+* 31247f6 Fix broken links
+* 986a301 Fix broken links in 2019 site
+* a88b4ea Redo lectures as a collection
+* cc2e524 Add redirect
+* 7d25aa8 Organize site by year
+* 83b651e exercise tidying
+* 2864497 Less Linux-specific exercises
+* f58fb71 Fix accent color in dark mode
+* 3bb18f7 Fix CSS for monofont links on dark mode
+* 0de61d5 Fix coming soon for MLK day
+* d4fa955 Fix arrow key remaps in insert mode
+* faa88e7 Process Jose's feedback
+* 5e2367b jjgo comments
+* 2e9f973 Exercises for data wrangling
+* 6d2214a First draft of data wrangling lecture notes
+* d736e42 Add exercise
+* 8eccae8 Add reference
+* 53a49a8 Improve exercises
+* 79195f8 Swap lectures
+* ab3148f Add note on macOS and sysfs
+* 36bc5f3 Process Jon's feedback
+* 047cd49 Fix issues with shell tools notes
+* db9fb43 Make heading levels more consistent
+* 419629b Fix exercise numbering
+* fa84335 Remove alias from shell tools notes
+* 5c9e870 Add acks
+* 4f9b8ff Add shell tools exercises
+* 0c71a5a Add acks
+* 67d364b Link editors lecture notes
+* be75afb Add editors lecture for 2020
+* 075cfc1 Fix CSS class naming conflict
+* d5f2af2 Add hint: man, not find
+* 40e1b70 Add hint on quoting
+* 9261bcf Tweaks
+* b5c4e3d Where questions go
+* 27b27f8 Make it clear that videos will be added to notes
+* 7fe3dc1 Don't break lines in code segments
+* 80e5d8d Minor language nit in 1st lecture
+* 092c9cf Some sudo + sysfs bits for the advanced
+* 315d2a2 Add shell tools and scripting lecture notes
+* ebd6990 Add exercise for first lecture
+* 6092375 Another unnecessarily long line
+* dfdc21a Shorten long line
+* 632aa38 Trailing prompt is distracting
+* 9abc739 Link to lecture notes from home page schedule
+* 246bd17 Make padding on code blocks a little nicer
+* 755625a Gemfile bump
+* 52332df First lecture notes (no exercise yet)
+* c882769 Simplify homepage
+* 6573ae4 Process Jose's feedback
+* 03a1665 Update homepage and lectures list
+* bc0a779 Reorder topics
+* 83d540f Make another editing pass over about page
+* 6f6e8f0 Fix validation errors
+*   ae4d208 Merge pull request #1 from missing-semester/dependabot/bundler/rubyzip-2.0.0
+|\  
+| * 8bd6de7 Bump rubyzip from 1.2.2 to 2.0.0
+* | 4ef377a nit: add space after parenthesis
+* | 787ec0e Remove hacky js for asciinemas
+* | 7159143 Fix autoplay on mobile
+* | 406a697 Redo demos using videos and outside comments
+* | 7a38011 Minor fix for inline code blocks
+* | 85b9c9e Import fonts, increase font & add dark theme
+* | 0d9004e Include asciicasts in the about page
+* | ff29732 Add lecture time and location
+* | fd582f2 Add description and partial info for 2020
+* | 5f6a4f6 Change color scheme
+* | 80f2e68 Add first draft of 'about the class' blog post
+|/  
+* d53526f Update dependencies
+* d4412ea Begin transition to new name and domain
+* b0d857f Update information related to rsync.net
+*   490bdf5 Merge pull request #12 from 01programs/patch-2
+|\  
+| * f2d26eb fix typo
+|/  
+* e319bcb Update notes on encrypted filesystems
+* 3846309 Add notes on append only backups
+*   2755f49 Merge branch 'chrisamurao/patch-1'
+|\  
+| * f822732 Fixed typo on tampermonkey
+|/  
+*   b7057f0 Merge branch 'JohnPhamous/patch-1'
+|\  
+| * 7db3ffa Fixing typo to make example clear
+|/  
+*   3d5712f Merge branch 'Offpics/patch-1'
+|\  
+| * fee7039 Fix spelling
+|/  
+* 7e90024 New Shell and Scripting video
+* c3b56b7 Restore note about videos/notes
+* e739bb2 Do capitalization manually
+* 7f6f3a1 Add topic list to front page
+* a540bdf Make lectures page backed by data file
+* 7947e84 Slightly nicer formatting
+* 8bfd5ea Mention r/hackertools in the list too
+* 2682d57 Try to make front page easier to navigate
+* 68e9796 Add ref to gmail backups
+*   2bf1803 Merge branch 'HerrKlemmy/patch-1'
+|\  
+| * ad5c775 Update virtual-machines.md
+|/  
+* ace7909 Add Public APIs ref
+* 1949442 Mention backup e-mail
+* 9766d49 Add r/hackertools links and remove Piazza links
+*   1d2a5f2 Merge pull request #4 from muellermarkus/patch-1
+|\  
+| * 97929e1 Typo in command-line.md
+* |   8665574 Merge pull request #6 from immanuelfodor/master
+|\ \  
+| |/  
+|/|   
+| * 33dfa3f Merge pull request #1 from immanuelfodor/immanuelfodor-shell-md
+|/| 
+| * 48c994f Replace the dummy file to the actual script + typo
+|/  
+*   9535eef Merge branch 'apengwin/patch-1'
+|\  
+| * a793d06 typo hehe
+|/  
+*   2d6bde2 Merge branch 'gvre/master'
+|\  
+| * a90a5dc Remove quotes
+* | 5c5d0cc Add link to edit current lecture page
+* | 8853667 Merge branch 'gvre/master'
+|\| 
+| * 61b5cdc Remove quotes from variable
+|/  
+* 702087e Remove subtitle
+* f8dd911 Make it more obvious that the class is over
+* 4c68b19 Make it more obvious that there are videos
+* c4c0850 Link to shared locations
+* ddeeb79 Link to https://www.securemessagingapps.com/
+* 8839db2 Mention more password managers
+* a077119 Fix aspect ratios
+* b95ff19 Add videos
+* 5fd5469 Add favicons
+* 578294c Update README
+* b1c484a Fix typo
+* aed281d USB data blockers
+* 24004e8 Add security lecture notes
+* 3a6c7c8 Update schedule
+* 305ebd7 Add note on Karabiner
+* 8777f5e Add text on OS customization
+* 14004ac Tweak text
+* 3f8ba46 Add some text on package management
+* 2d4ba34 Write web lecture notes
+* 8241968 Write Remote Machine Lecture
+* bd2575a Add todo for automation
+* c764149 Add more exercises shell
+* bd96702 Draft remote machine contents
+* 67639db Add more git exercises
+* 834305c Add notes for future automation topics
+* f156626 Draft os-customization exercises and reference
+* 006d476 Draft security topics and exercises
+* ef946d4 Minor comments about editors
+* 4f42dfe Add minor comments to dotfiles
+* df4e4c3 Add rename exercise
+* 55b2ffb Make exercises use number bullets
+* 4c38b1f Update schedule
+* 401acc7 Add note
+* 0e9bc5f Write notes for automation
+* a575a0d Move remotes lecture
+* b96364c Rename automation lecture
+* f721b34 Remove title from cli environment
+* c917e73 Finish lecture content for machine introspection
+* d82b8fa Add rsync/rclone
+*   fc68271 Merge branch 'master' of github.com:hacker-tools/hacker-tools.github.io
+|\  
+| * 36a93be machine introspection outline
+* | 9f6f34f Fix typos in backups
+* | 3a0e3da Add backup resources and exercises
+* | 835ab72 Include extra bk considerations and web backup
+* | dcbc343 Write backup notes
+|/  
+* f964fdc Add more content
+* 1bb41e6 Add more on debuggers
+* 639cdb1 Add GDB
+* 7b484dc Add link to dotfiles repositories
+* df2fda3 Add more content
+* 522e6ce Some version control exercises
+* 6884fe5 Add mention of buffers
+* 888776c Fix typos
+* cec800e Update
+* 78a6820 Add bash
+* 0dd4cfb Comment out section that has no content
+* d6d2d1a Add lecture notes for editors
+* ab75d0f Some more vcs content + start of exercise list
+* c1633e6 a start for vcs
+* 9986222 Add note
+* d69ee02 Add link to website source code
+* a3f15bb Fix highlight background bleeding outside border
+* 24daa3a More data wrangling
+* 4e87c7b Add terminal emulators/multiplex to command-line
+* be912d5 More data sets
+* 6b9f312 More data wrangling exercises
+* 99843fa Add some data wrangling exercises
+* 1d5995a Lecture notes from data wrangling
+* 057121d Initial draft of command-line.md
+* 80d1a71 Add note
+* 2cc8de3 Add note from Jon
+* af6cbf7 Add link from Jose
+* c02b2b0 Fix error exercise
+*   5be665c Merge remote-tracking branch 'origin/master'
+|\  
+| *   1938e7e Merge branch 'master' of github.com:hacker-tools/hacker-tools.github.io
+| |\  
+| * | 9b360ba Fix shell explanation
+* | | 1d8ba6f Fix numbering
+| |/  
+|/|   
+* | f5d5030 More Piazza
+|/  
+* 940a5b8 Fix some typos in shell
+* 56fbb1b Add extra exercises for shell
+*   2dcc98a Merge branch 'master' of github.com:hacker-tools/hacker-tools.github.io
+|\  
+| * 5b39c0b Fix
+| * 989dd74 Fix formatting
+| * 4a81abf Update dependencies
+| * 0c9e85f vim doesn't like shell as the code type
+* | 9cffdc1 Add some exercises for shell
+|/  
+* b5a19d7 Add extra stuff for VM & containers
+*   1c82fd9 Merge branch 'master' of github.com:hacker-tools/hacker-tools.github.io
+|\  
+| * cde2949 Update
+| * c10e3ce Update
+| * 3341f50 Text on containers
+| * dcb6bb5 List presenters
+| * cfffca4 Update
+| * e497609 Add Piazza link
+| * 73bc95e Mention some special vars
+| * 29a5ac6 Add dotfiles content
+| * bd94bf5 Fix parsing
+| * e7dd5e1 First draft of shell lecture
+* | a524147 Add under-construction page
+|/  
+* 86f74ec Add content for VMs
+* eb14a91 Add some intro content
+* db290a4 Add nicer message
+* ccd5a83 Acknowledge sponsors
+* ffa24fb Add schedule and empty pages for topics
+* b2e3a22 Add basic course info
+* 112ddbd Initial commit
 
 ===== 简化图形 (最近30条) =====
-* 9d67426 feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
-* 16c60f6 docs: 更新README反映week1-4目录结构和homework练习
-* 1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
-* f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
-* b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
-* 4a78f71 feat(homework-q07): chmod+x可执行权限实验，对比前后ls -l输出和直接运行行为差异
-* 42f3cb1 feat(homework-q06): 使用test -f和[ -f ]编写文件存在性检查脚本，测试四种情况
-* d294d77 feat(homework-q05): 退出状态$?与&&||条件执行，实现目录不存在时才创建的一行命令
-* f69734c feat(homework-q04): stdin/stdout/stderr标准流重定向实验，分别和合并重定向到文件
-* 51f7402 feat(homework-q03): 单引号双引号ANSI-C引号区别实验，输出含$!和换行的字面量字符串
-* d9cd055 feat(homework-q02): glob通配符模式匹配实验，创建测试文件验证*?和花括号展开
-* 0eedd71 feat(homework-q01): ls -l长格式输出与权限位10字符含义解析，编写脚本运行并记录结果
-* 7a30b4f chore(homework): 在week1-4中创建homework/q01-q10目录结构
-* af118fd chore:
-* 0e6eaf6 chore(reorg): 移除空reports目录
-* 2d3f679 chore(reorg): 将q13-q16和第4周实验报告移入week4目录
-* 0cf8e73 chore(reorg): 将q09-q12和第3周实验报告移入week3目录
-* 9161096 chore(reorg): 将q05-q08和第2周实验报告移入week2目录
-* b8b6a6c chore(reorg): 将q01-q04和第1周实验报告移入week1目录
-* 2e35579 feat(reports): 在实验报告中添加GitHub仓库链接，修复week4编译错误并重新编译PDF
-* 2aebcb9 feat(reports): 添加四周实验报告的tex源文件和编译后的PDF
-* 8f7cd84 fix: 补充被gitignore忽略的实验日志文件，修正.gitignore规则
-* 7bed049 feat(q16): 修复并交付陌生的小型工具仓库，临时破坏验证失败后修复，编写Makefile并计算SHA-256
-* f1508cc feat(q15): 把本地API数据转换为可读报告，使用curl和jq筛选排序并生成summary.md
-* 4fbd0f0 feat(q14): 让Make只重建真正受影响的产物，编写Makefile定义依赖链和增量构建
-* 5eb7419 feat(q13): 建立可执行的本地质量门禁，配置ruff和pytest，编写check.sh一键检查
-* d3c2026 feat(q12): 修复可复现的线性回归训练循环，补全zero_grad、backward、step和评估模式
-* 03a3d6e feat(q11): 把无法处理的协作材料改成可执行信息，重写Issue、提交信息和评审意见
-* 11aee56 feat(q10): 让编程智能体进入可验证的修复循环，添加空白姓名测试并智能体修复SystemExit(2)
-* 0fd193d feat(q09): 从源码构建并在干净环境安装Wheel，创建greetlab包并生成wheel验证安装
+*   fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+|\  
+| * 7343431 docs: fix uv lockfile Docker example
+|/  
+*   853e0ea Merge branch 'tufailrizvi-debug/fixing_typo'
+|\  
+| * 2df4a16 Fix typos in SSH-related documentation
+|/  
+*   adaebe3 Merge branch 'ariuxklc/master'
+|\  
+| * de7ac78 Add Mongolian translation link
+|/  
+* 575bf9f Bump actions/checkout from 6 to 7 in the actions group (#385)
+*   f71203e Merge pull request #382 from JasonLuo-4/fix-lecture2-typos
+|\  
+| * 8b51b99 Fix two typos in Lecture 2 exercises
+|/  
+*   def3237 Merge branch 'arteen1000/patch-1'
+|\  
+| * 495a201 Change wording slightly in code quality lecture
+|/  
+* 49f676c Tweak text about license
+*   5a501b8 Merge branch 'itiquette/fix/url-change'
+|\  
+| * 4f14f71 Switch to new url for swedish
+* | 46e3a32 Fix broken link
+|/  
+*   600ade0 Merge branch 'huntagain2008/huntagain2008-patc...'
+|\  
+| * 376db0b Fix the greet CLI tool
+* |   c714fda Merge branch 'dylantran035/fix-shell-typo'
+|\ \  
+| * | 57626a3 Fix confusing phrasing in shell.md
+| |/  
+* |   3822e28 Merge branch 'huntagain2008/huntagain2008-patc...'
+|\ \  
+| |/  
+|/|   
+| * 19bcac2 Switch to `docker compose`
+|/  
+*   6df931a Merge branch 'xiqi98/fix-typo'
+|\  
+| * 2c86ace Fix typo: remove duplicate "the" in beyond-code.md
+|/  
+* e54cf48 Highlight special topics from previous years
+* 5d8455a Clean up exercises sections in 2019 lectures
+* c7c076a Align 2026 page with earlier years
+* 3cec16a Fix styling
+* 00186f7 Add dates to 2019 lectures
+*   a7c73c2 Merge branch 'janderssonse/feat/swedish-translation-link'
+|\  
+| * a53c5a8 Add a link to full Swedish translation
+|/  
 
 ===== 当前分支最近的提交 =====
-9d67426 feat(homework-q11): Git数据模型学习，用git cat-file拆解commit-tree-blob对象并验证内容寻址
-16c60f6 docs: 更新README反映week1-4目录结构和homework练习
-1ad2758 feat(homework-q10): find -print0与xargs -0配合统计.sh文件行数，正确处理含空格文件名
-f0c3d30 feat(homework-q09): 使用$(date +%Y-%m-%d)命令替换生成带日期的备份文件名，编写通用备份函数
-b5bc8de feat(homework-q08): set -x调试跟踪实验，观察变量展开和命令执行过程并对比无调试输出
-Cloning into '/tmp/ms'...
-fatal: unable to access 'https://github.com/missing-semester/missing-semester/': Failed to connect to github.com port 443 via 127.0.0.1 after 0 ms: Could not connect to server
-solve.sh: line 8: cd: /tmp/ms: No such file or directory
+fea9192 Merge branch 'oiahoon/docs/fix-uv-lock-example'
+7343431 docs: fix uv lockfile Docker example
+853e0ea Merge branch 'tufailrizvi-debug/fixing_typo'
+2df4a16 Fix typos in SSH-related documentation
+adaebe3 Merge branch 'ariuxklc/master'

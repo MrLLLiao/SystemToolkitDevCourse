@@ -1,6 +1,32 @@
 ===== README.md 的完整提交历史 =====
+49f676c Tweak text about license
+19bcac2 Switch to `docker compose`
+77b301d Remove duplicate "the"
+ad5c09c Fix typos and improve clarity in course docs
+f61bdc1 Update CI status URLs
+9ef9db7 Add Docker setup for easier development
+ad1ba94 FIX: Spelling mistakes,'content' should be plural and verb adjusted accordingly
+8010724 Separate build and links status
+79d143f Switch to proof-html action
+958e0a4 Disable CI
+f6c4244 Switch to GitHub Actions
+9b2d860 Add build status to README
+e2b716f Add link to website license page
+9389a07 Clarify that license covers source code
+56ecc34 Remove link to Hacker Tools from README
+d4412ea Begin transition to new name and domain
+578294c Update README
+112ddbd Initial commit
 
 ===== 最后修改 README.md 的提交 (git log -1 -- README.md) =====
+commit 49f676cc3a754529ceff846dc68d529feb747cc6
+Author: Anish Athalye <me@anishathalye.com>
+Date:   Sat Apr 25 11:01:42 2026 -0700
+
+    Tweak text about license
 
 ===== 简洁输出：hash + 作者 + 邮箱 + 日期 + 消息 =====
-solve.sh: line 3: cd: /tmp/ms: No such file or directory
+commit: 49f676c
+作者: Anish Athalye <me@anishathalye.com>
+日期: 2026-04-25 11:01:42 -0700
+消息: Tweak text about license

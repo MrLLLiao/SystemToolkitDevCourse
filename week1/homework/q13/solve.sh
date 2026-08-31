@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 练习13: 找出最后修改 README.md 的人
-cd /tmp/ms
+cd /root/ms
 echo "===== README.md 的完整提交历史 ====="
 git log --oneline -- README.md
 echo ""

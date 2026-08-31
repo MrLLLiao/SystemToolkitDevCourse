@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 练习12: 克隆仓库并可视化版本历史
-# 克隆 missing-semester 仓库（完整历史）
-REPO_DIR=/tmp/ms
+set -e
+REPO_DIR=/root/ms
 if [ ! -d "$REPO_DIR/.git" ]; then
     git clone https://github.com/missing-semester/missing-semester "$REPO_DIR"
 fi

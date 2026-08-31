@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 练习14: 用 git blame 追踪 _config.yml 的 collections 行
-cd /tmp/ms
+cd /root/ms
 echo "===== _config.yml 中 collections 相关内容 ====="
 grep -n "collections" _config.yml
 echo ""

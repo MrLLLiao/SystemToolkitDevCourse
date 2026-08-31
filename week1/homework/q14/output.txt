@@ -1,20 +1,60 @@
 ===== _config.yml 中 collections 相关内容 =====
+19:collections:
 
 ===== git blame _config.yml (完整输出) =====
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  1) # Setup
+ac838248 (Anish Athalye 2023-02-19 20:01:43 -0500  2) title: 'Missing Semester'
+d4412ead (Anish Athalye 2019-12-01 21:26:19 -0500  3) url: https://missing.csail.mit.edu
+20e84bc8 (Anish Athalye 2026-01-17 19:13:17 -0500  4) thumbnail: "/static/assets/thumbnails/default.png"
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  5) 
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  6) # Settings
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  7) markdown: kramdown
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  8) kramdown:
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500  9)   input: GFM
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 10)   hard_wrap: false
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 11) highlighter: rouge
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 12) permalink: /:title/
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 13) future: true
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 14) # safe: true # breaks local rendering if enabled
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 15) timezone: America/New_York
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 16) analytics:
+1320c3c9 (Anish Athalye 2023-02-12 08:48:11 -0500 17)   tracking_id: G-P7WVHD84D1
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 18) 
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 19) collections:
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 20)   '2019':
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 21)     output: true
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 22)   '2020':
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 23)     output: true
+becf2000 (Anish Athalye 2025-12-06 20:44:12 -0800 24)   '2026':
+becf2000 (Anish Athalye 2025-12-06 20:44:12 -0800 25)     output: true
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 26) 
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 27) # Excludes
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 28) exclude:
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 29)   - AGENTS.md
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 30)   - CNAME
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 31)   - Dockerfile
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 32)   - Gemfile
+^112ddbd (Anish Athalye 2019-01-04 22:00:31 -0500 33)   - Gemfile.lock
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 34)   - README.md
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 35)   - browser.sh
+a2b53b74 (Anish Athalye 2026-01-23 16:39:39 -0500 36)   - docker-compose.yml
+fa309f93 (Anish Athalye 2020-05-16 11:13:27 -0400 37)   - vendor
 
 ===== 只看 collections 相关行 =====
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 19) collections:
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 21)     output: true
+a88b4eac (Anish Athalye 2020-01-17 15:26:30 -0500 23)     output: true
+becf2000 (Anish Athalye 2025-12-06 20:44:12 -0800 25)     output: true
 
 ===== 追踪 collections: 行对应的 commit =====
 collections: 行由 commit a88b4eac 引入（2020-01-17）
 
 ===== git show 查看该 commit 详情 =====
-solve.sh: line 3: cd: /tmp/ms: No such file or directory
-grep: _config.yml: No such file or directory
-fatal: no such path 'week1/homework/q14/_config.yml' in HEAD
-fatal: no such path 'week1/homework/q14/_config.yml' in HEAD
-fatal: ambiguous argument 'a88b4eac': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
-fatal: ambiguous argument 'a88b4eac': unknown revision or path not in the working tree.
-Use '--' to separate paths from revisions, like this:
-'git <command> [<revision>...] -- [<file>...]'
+commit: a88b4eac326483e29bdac5ee0a39b180948ae7fc
+作者: Anish Athalye <me@anishathalye.com>
+日期: 2020-01-17 15:26:30 -0500
+
+消息: Redo lectures as a collection
+
+正文:
+
