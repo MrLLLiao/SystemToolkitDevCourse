@@ -1,0 +1,31 @@
+############ 1. 测试 Skill: todo-audit ############
+--- 1a. 扫描样例（应检出 3 处真实标记） ---
+testdata/sample_with_markers.md:6: # TODO: 增加超时与重试
+testdata/sample_with_markers.md:9: # FIXME: 这里硬编码了域名
+testdata/sample_with_markers.md:12: # XXX 临时调试代码，记得删
+--- 共 3 处标记（pattern: TODO|FIXME|HACK|XXX，已忽略依赖/构建目录）---
+
+--- 1b. 扫描仓库（忽略依赖/构建目录；q09 的 TODO_KEY 为子串误报、SKILL 自引用亦会被扫到） ---
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/skill/todo-audit/SKILL.md:25: - 只做文本扫描，不做语义判断（例如 `# TODO` 与 `"TODO"` 字符串都会被匹配）；
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/skill/todo-audit/scripts/todo_audit.py:2: """todo-audit: 扫描代码库中的 TODO/FIXME/HACK/XXX 遗留标记。
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/skill/todo-audit/scripts/todo_audit.py:21: ap.add_argument("--pattern", default=r"TODO|FIXME|HACK|XXX", help="匹配正则")
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/solve.sh:10: echo "--- 1b. 扫描仓库（忽略依赖/构建目录；q09 的 TODO_KEY 为子串误报、SKILL 自引用亦会被扫到） ---"
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/testdata/sample_with_markers.md:6: # TODO: 增加超时与重试
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/testdata/sample_with_markers.md:9: # FIXME: 这里硬编码了域名
+/root/gitRepo/SystemToolkitDevCourse/week3/homework/q10/testdata/sample_with_markers.md:12: # XXX 临时调试代码，记得删
+--- 共 21 处标记（pattern: TODO|FIXME|HACK|XXX，已忽略依赖/构建目录）---
+
+############ 2. 测试子智能体: homework-reviewer（按定义审查 q05） ############
+审查对象: /root/gitRepo/SystemToolkitDevCourse/week3/homework/q05
+[PASS] 三件套 ANSWER.md: 存在
+[PASS] 三件套 solve.sh: 存在
+[PASS] 三件套 output.txt: 存在
+[PASS] solve.sh set -u: 
+[FAIL] solve.sh 用 dirname 定位: 用绝对路径 cd 也能跑，但不如 dirname 稳健
+[PASS] output.txt 有内容: 2185 chars
+[PASS] ANSWER.md 含 练习/执行/验证: 缺:无
+[PASS] 无临时文件: 无
+结论: 需补充（详见上方 FAIL 项）
+
+>>> 说明：子智能体按清单如实报告了 q05 的一处真实不一致（solve.sh 用绝对 cd 而非 dirname）——
+>>> 这证明子智能体不是橡皮图章，能发现真实问题。审查功能本身工作正常。
