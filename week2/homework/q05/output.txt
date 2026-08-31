@@ -1,0 +1,48 @@
+共运行 39 次, 第 39 次失败 (退出码 1)
+
+===== 标准输出 stdout.log =====
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Everything went according to plan
+Something went wrong
+
+===== 标准错误 stderr.log =====
+The error was using magic numbers
+
+===== 验证: 成功的运行次数 = 38, 失败 1 次 =====
+stdout 总行数: 39 | stderr 总行数: 1
