@@ -1,0 +1,17 @@
+[project]
+name = "q05pkg-25020007073"
+version = "0.1.0"
+description = "week3 homework q05: 演示发布到包索引并构建镜像"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["click>=8.0"]
+
+[project.scripts]
+q05hello = "q05pkg.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

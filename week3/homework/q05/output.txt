@@ -1,0 +1,51 @@
+############ 0. 构建包产物 ############
+Successfully built dist/q05pkg_25020007073-0.1.0-py3-none-any.whl
+############ 1. twine check（元数据校验） ############
+Checking dist/q05pkg_25020007073-0.1.0-py3-none-any.whl: [32mPASSED[0m
+Checking dist/q05pkg_25020007073-0.1.0.tar.gz: [32mPASSED[0m
+############ 2. 本地 PyPI 索引（等效 TestPyPI 演示） ############
+--- twine upload 到本地索引 ---
+[?25hUploading q05pkg_25020007073-0.1.0.tar.gz
+[?25l[2K[35m  0%[0m [38;5;237m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/3.4 kB[0m • [36m--:--[0m • [31m?[0m[2K[35m100%[0m [38;5;70m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m3.4/3.4 kB[0m • [33m00:00[0m • [31m?[0m
+[?25h--- 从本地索引安装并运行 ---
+Hello, 本地索引!
+############ 3. 构建包含该包的 Docker 镜像 ############
+#8 naming to docker.io/library/q05pkg-25020007073:0.1.0 done
+#8 unpacking to docker.io/library/q05pkg-25020007073:0.1.0 0.1s done
+#8 DONE 0.5s
+REPOSITORY           TAG       SIZE
+q05pkg-25020007073   0.1.0     191MB
+--- 运行镜像（入口即包的 CLI） ---
+Hello, 镜像内CLI!
+############ 4. 推送演示：本地 registry 等效 ghcr.io ############
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+6d464ea18732: Pulling fs layer
+44cf07d57ee4: Pulling fs layer
+3493bf46cdec: Pulling fs layer
+bbbdd6c6894b: Pulling fs layer
+8e82f80af0de: Pulling fs layer
+6d464ea18732: Download complete
+3493bf46cdec: Download complete
+bbbdd6c6894b: Download complete
+44cf07d57ee4: Download complete
+b537bf6d1146: Download complete
+32a76c78501f: Download complete
+44cf07d57ee4: Pull complete
+bbbdd6c6894b: Pull complete
+8e82f80af0de: Download complete
+3493bf46cdec: Pull complete
+8e82f80af0de: Pull complete
+6d464ea18732: Pull complete
+Digest: sha256:a3d8aaa63ed8681a604f1dea0aa03f100d5895b6a58ace528858a7b332415373
+Status: Downloaded newer image for registry:2
+--- docker push localhost:5000/q05pkg-25020007073:0.1.0 ---
+3311d53df965: Pushed
+6310eb16bf42: Pushed
+0.1.0: digest: sha256:e8bd00ca8ccee613c7d31f5bd5b0f89ec75c45c4a8aee427c82456628f839542 size: 856
+--- 从 registry 拉回验证 ---
+Status: Downloaded newer image for localhost:5000/q05pkg-25020007073:0.1.0
+localhost:5000/q05pkg-25020007073:0.1.0
+Hello, 从registry拉回!
+############ 5. 清理 ############
+cleaned
