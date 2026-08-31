@@ -47,7 +47,22 @@ week2/                    # 第2周
   q07/                    # 用调试器定位归并排序缺陷
   q08/                    # 先测量再优化慢速词频程序
   report/                 # 第2周实验报告
-  homework/               # 课后练习（q01-q10）
+  homework/               # 课后练习（命令行环境章）
+    q01/                  # -- 选项终止符与 - 开头文件
+    q02/                  # 综合 ls（隐藏/易读大小/按时间/彩色）
+    q03/                  # 进程替换比较 printenv 与 export
+    q04/                  # marco/polo 目录保存与回跳
+    q05/                  # 返回码 run-until-fail
+    q06/                  # 信号与任务控制（pgrep+kill）
+    q07/                  # wait 等待后台任务
+    q08/                  # pidwait 函数（kill -0 轮询）
+    q09/                  # 递归最近修改文件
+    q10/                  # alias dc 与 history top10
+    q11/                  # dotfiles 项目（PS1+install.sh）
+    q12/                  # tmux 上手与定制
+    q13/                  # pdb 调试归并排序缺陷
+    q14/                  # ASan 定位 use-after-free
+    q15/                  # strace 追踪系统调用
 week3/                    # 第3周
   q09/                    # 从源码构建并安装Wheel
   q10/                    # 编程智能体修复循环
