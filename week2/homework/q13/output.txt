@@ -1,0 +1,64 @@
+===== 1. 运行带 bug 的 merge_sort 于测试向量 =====
+input : [3, 1, 4, 1, 5, 9, 2, 6]
+output: [1, 5, 4, 3, 4, 5, 6, 9]
+(期望 [1, 1, 2, 3, 4, 5, 6, 9], 实际输出错误)
+
+===== 2. 用 pdb 在 bug 行(第16行 result.append(right[i])) 下断点观察 =====
+> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/debug_target.py(2)<module>()
+-> """供 pdb 聚焦调试的小目标: 直接调用 merge([1,3],[1,4]),
+(Pdb) Breakpoint 1 at /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/merge_sort_buggy.py:16
+(Pdb) > /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/merge_sort_buggy.py(16)merge()
+-> result.append(right[i])   # BUG: 应改为 right[j]
+(Pdb) 1
+(Pdb) 0
+(Pdb) [1, 3]
+(Pdb) [1, 4]
+(Pdb) 'else 分支即将执行: i=1 但 j=0, 却使用 right[i]'
+(Pdb) > /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/merge_sort_buggy.py(17)merge()
+-> j += 1
+(Pdb) [1, 4]
+(Pdb)   /usr/lib/python3.14/bdb.py(913)run()
+-> exec(cmd, globals, locals)
+  <string>(1)<module>()
+  /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/debug_target.py(7)<module>()
+-> print("merge([1, 3], [1, 4]) =", ms.merge([1, 3], [1, 4]))
+> /root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/merge_sort_buggy.py(17)merge()
+-> j += 1
+(Pdb) 
+===== 3. 更极端的复现: merge([1,3],[2]) 会越界 IndexError =====
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+  File "/root/gitRepo/SystemToolkitDevCourse/week2/homework/q13/merge_sort_buggy.py", line 16, in merge
+    result.append(right[i])   # BUG: 应改为 right[j]
+                  ~~~~~^^^
+IndexError: list index out of range
+
+===== 4. 修复差异: right[i] -> right[j] =====
+2,4c2
+< """带 bug 的归并排序: merge 的 else 分支误用 right[i] 而非 right[j]
+< 用调试器(pdb)定位并修复。
+< """
+---
+> """修复后的归并排序: merge 的 else 分支正确使用 right[j]。"""
+16c14
+<             result.append(right[i])   # BUG: 应改为 right[j]
+---
+>             result.append(right[j])   # 修复: 原来误写成 right[i]
+
+===== 5. 运行修复后的版本 =====
+input : [3, 1, 4, 1, 5, 9, 2, 6]
+output: [1, 1, 2, 3, 4, 5, 6, 9]
+
+===== 6. 运行 pytest 验证 =====
+plugins: typeguard-4.4.4
+collecting ... collected 7 items
+
+test_merge_sort.py::test_merge_sort[data0-expected0] PASSED              [ 14%]
+test_merge_sort.py::test_merge_sort[data1-expected1] PASSED              [ 28%]
+test_merge_sort.py::test_merge_sort[data2-expected2] PASSED              [ 42%]
+test_merge_sort.py::test_merge_sort[data3-expected3] PASSED              [ 57%]
+test_merge_sort.py::test_merge_sort[data4-expected4] PASSED              [ 71%]
+test_merge_sort.py::test_merge_sort[data5-expected5] PASSED              [ 85%]
+test_merge_sort.py::test_merge_sort[data6-expected6] PASSED              [100%]
+
+============================== 7 passed in 0.02s ===============================
