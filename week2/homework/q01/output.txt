@@ -1,0 +1,29 @@
+===== 1. 不带 -- 直接 touch -myfile（会被当作选项解析而报错） =====
+error: unexpected argument '-y' found
+
+  tip: to pass '-y' as a value, use '-- -y'
+
+Usage: touch [OPTION]... [FILE]...
+
+For more information, try '--help'.
+退出码: 1
+
+===== 2. touch -- -myfile 正常创建名为 -myfile 的文件 =====
+-rw-r--r-- 1 root root 0 Aug 31 10:55 ./-myfile
+
+===== 3. 不使用 -- 删除它: 用 ./ 前缀把文件名变成路径 =====
+删除成功, -myfile 已不存在
+
+===== 4. 对比: rm -myfile 不带 -- 会再次报错 =====
+rm: invalid option -- 'm'
+Try 'rm ./-myfile' to remove the file '-myfile'.
+Try 'rm --help' for more information.
+退出码: 1（非 0, 说明 rm 把它当选项拒绝了）
+
+===== 5. 最后用 -- 清理 =====
+清理完成, 当前目录文件:
+total 16
+drwxr-xr-x  2 root root 4096 Aug 31 10:55 .
+drwxr-xr-x 12 root root 4096 Aug 30 17:05 ..
+-rw-r--r--  1 root root  789 Aug 31 10:55 output.txt
+-rwxr-xr-x  1 root root  938 Aug 31 10:55 solve.sh
