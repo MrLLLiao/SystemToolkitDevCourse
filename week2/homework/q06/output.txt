@@ -1,0 +1,20 @@
+===== 1. 启动 sleep 10000 后台任务 =====
+shell 拿到的 pid=780
+your 131072x1 screen size is bogus. expect trouble
+    780 S+   sleep 10000
+
+===== 2. 模拟 Ctrl-Z (SIGTSTP): 挂起任务 =====
+your 131072x1 screen size is bogus. expect trouble
+    780 T+   sleep 10000
+
+===== 3. 模拟 bg (SIGCONT): 让任务在后台继续运行 =====
+your 131072x1 screen size is bogus. expect trouble
+    780 S+   sleep 10000
+
+===== 4. 用 pgrep -af 查找 pid, 不手动输入 =====
+780 sleep 10000
+
+===== 5. 用 pgrep 结果直接 kill =====
+
+===== 6. 验证: 进程应已消失 =====
+进程已终止, pgrep 无输出
