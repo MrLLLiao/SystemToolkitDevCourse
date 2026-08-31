@@ -35,6 +35,12 @@ week1/                    # 第1周
     q08/                  # set -x 调试
     q09/                  # 带日期备份
     q10/                  # xargs + find 统计行数
+    q11/                  # Git 数据模型与核心对象
+    q12/                  # 克隆仓库并可视化版本历史
+    q13/                  # 定位 README.md 最后修改者
+    q14/                  # git blame 追踪 collections 行
+    q15/                  # git stash 工作流实验
+    q16/                  # 模拟并解决 merge conflict
 week2/                    # 第2周
   q05/                    # 控制可清理的后台任务
   q06/                    # 语义重构与本地开发反馈
