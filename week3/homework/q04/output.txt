@@ -1,0 +1,65 @@
+############ 0. 展示文件 ############
+--- Dockerfile ---
+FROM python:3.12-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py .
+
+EXPOSE 5000
+CMD ["python", "app.py"]
+--- docker-compose.yml ---
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=cache
+      - REDIS_PORT=6379
+    depends_on:
+      - cache
+
+  cache:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+############ 1. docker compose up -d --build ############
+ Container q04-cache-1  Creating
+ Container q04-cache-1  Created
+ Container q04-web-1  Creating
+ Container q04-web-1  Created
+ Container q04-cache-1  Starting
+ Container q04-cache-1  Started
+ Container q04-web-1  Starting
+ Container q04-web-1  Started
+NAME          IMAGE            COMMAND                  SERVICE   CREATED        STATUS                  PORTS
+q04-cache-1   redis:7-alpine   "docker-entrypoint.s…"   cache     1 second ago   Up Less than a second   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp
+q04-web-1     q04-web          "python app.py"          web       1 second ago   Up Less than a second   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+
+############ 2. 等待应用就绪并访问（验证计数递增） ############
+>>> 应用就绪（1s），HTTP 200
+--- 连续访问 3 次，观察 Redis 计数器递增 ---
+{"service": "q04-web", "visits": 2, "redis": "cache:6379"}
+{"service": "q04-web", "visits": 3, "redis": "cache:6379"}
+{"service": "q04-web", "visits": 4, "redis": "cache:6379"}
+
+############ 3. 验证 Redis 中的数据（从 cache 容器内查） ############
+4
+PONG
+
+############ 4. 服务连接关系 ############
+NAME          SERVICE   PORTS
+q04-cache-1   cache     0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp
+q04-web-1     web       0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+
+############ 5. 停止并清理 ############
+ Network q04_default  Removing
+ Volume q04_redis_data  Removed
+ Network q04_default  Removed

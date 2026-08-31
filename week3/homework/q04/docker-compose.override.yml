@@ -1,0 +1,8 @@
+# 本机网络适配层（仅构建期注入宿主代理，避免构建容器因 fake-IP DNS 拉包失败）
+services:
+  web:
+    build:
+      args:
+        HTTP_PROXY: http://172.26.224.1:7890
+        HTTPS_PROXY: http://172.26.224.1:7890
+        NO_PROXY: localhost,127.0.0.1
