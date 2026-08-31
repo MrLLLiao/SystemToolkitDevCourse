@@ -88,3 +88,11 @@ docker push ghcr.io/mrllliao/q05pkg-25020007073:0.1.0
 ## 验证
 - `output.txt` 记录了完整可复现流程；重跑 `bash solve.sh` 可复现（会重新构建、上传、push、拉回并清理）。
 - 已确认：twine check 通过、从本地索引安装运行成功、镜像内 CLI 运行成功、push→pull→run 全链路成功、清理无残留容器/镜像。
+## 真实发布记录（补充，2026-08-31）
+在用户提供 GitHub 令牌后，完成**ghcr.io 真实推送**：
+- `docker login ghcr.io -u MrLLLiao` 成功；
+- `docker push ghcr.io/mrllliao/q05pkg-25020007073:0.1.0` 成功，digest `sha256:f644c18e…`（全层推送完成）；
+- `docker pull ghcr.io/mrllliao/q05pkg-25020007073:0.1.0` 验证可拉取，`docker run` 输出 `Hello, World!`；
+- 包页：https://github.com/users/MrLLLiao/packages/container/package/q05pkg-25020007073 （当前为 private）。
+- 真实 push 前须先修本机 git 代理（`git config --global http.proxy http://172.26.224.1:7890`），否则连不上 github.com。
+- TestPyPI 仍待单独 PyPI token（GitHub 令牌不能用于 PyPI）。

@@ -46,3 +46,10 @@
 ## 验证
 - `output.txt` 完整记录；重跑 `bash solve.sh` 可复现。
 - 已确认：本地 HTTP 200、标题/学号正确渲染、gh-pages 分支只含站点文件、main 工作区未被污染（`git status` 仅显示待提交的 q06 文件）。
+## 真实发布记录（补充，2026-08-31）
+在用户提供 GitHub 令牌后，完成**GitHub Pages 真实上线**：
+- `git push origin gh-pages` 成功（远端新建 gh-pages 分支，仅含 index.html + style.css）；
+- 经 REST API 确认 Pages 已启用：`source=gh-pages/`、status=built、https_enforced=true；
+- 站点地址 `https://mrllliao.github.io/SystemToolkitDevCourse/` 访问返回 HTTP 200，
+  标题"廖世嘉 · 系统开发工具基础"正确渲染。
+- 真实 push 前须先修本机 git 代理（`git config --global http.proxy http://172.26.224.1:7890`）。
