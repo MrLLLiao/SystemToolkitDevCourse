@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{float}
 
 \geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue, citecolor=blue}
@@ -33,7 +34,7 @@
 
 \section{实验基本信息}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{实验基本信息}
 \label{tab:info}
@@ -44,8 +45,9 @@
 姓名 & 廖世嘉 \\
 学号 & 25020007073 \\
 专业 & 25级计算机科学与技术 \\
-实验环境 & Linux / Python / build / venv / PyTorch / pytest \\
-实验日期 & 2026年9月7日 \\
+实验环境 & Linux (WSL) / Python / uv / Docker Compose / Git / XeLaTeX \\
+课上实验 & 4 个（构建 Wheel、智能体修复、协作改写、PyTorch 训练循环）\\
+课后练习 & 12 个（venv、打包、Docker、发布、Pages、智能体编程、隔离沙箱等）\\
 GitHub仓库 & \href{https://github.com/MrLLLiao/SystemToolkitDevCourse}{https://github.com/MrLLLiao/SystemToolkitDevCourse} \\
 \bottomrule
 \end{tabular}
@@ -53,44 +55,33 @@ GitHub仓库 & \href{https://github.com/MrLLLiao/SystemToolkitDevCourse}{https:/
 
 \section{实验目的}
 
-本实验围绕 Python 包打包与分发、智能体编程、协作材料质量改写以及 PyTorch 训练循环修复四个主题展开。通过四个连续实验，掌握从源码构建 wheel 并在干净环境安装的流程，体验编程智能体的测试驱动修复循环，学习将低质量协作材料改写为可执行信息，以及补全 PyTorch 线性回归训练循环。
+本实验围绕 Python 包打包与分发、Docker 容器化、软件发布与智能体编程两大主题展开。
+课上完成四个连续实验：从源码构建 wheel 并在干净环境安装、让编程智能体进入可验证的修复循环、
+把无法处理的协作材料改写为可执行信息、修复 PyTorch 线性回归训练循环。
+课后通过 12 个练习进一步掌握虚拟环境、pyproject.toml 打包、lockfile、Docker Compose 编排、
+TestPyPI/ghcr.io 发布、GitHub Pages 建站、四种编码模式对比、智能体浏览陌生代码库、
+氛围编程、AGENTS.md/Skill/子智能体、正则练习与容器隔离沙箱等内容。
 
 \section{实验环境与工具}
 
-本实验在 Linux 和 Windows 环境中完成，主要使用 Python 的 build 模块、venv 虚拟环境、pip 安装、pytest 测试框架、ruff 代码检查工具以及 PyTorch CPU 版本。实验目录为 SystemToolkitDevCourse，四个实验分别位于 q09、q10、q11 和 q12。
+本实验在 Windows 11 + WSL Ubuntu 26.04 环境中完成。主要工具：Python 3.14、uv（包管理）、
+venv（虚拟环境）、build、twine、pytest、Docker Engine + Compose v2、Git、
+ghcr.io / 本地 registry、GitHub Pages、pypiserver、PyTorch (CPU)、XeLaTeX/latexmk。
+实验中全程遵守"分步提交、禁止单次全量提交"的 Git 规范，每个练习一个独立 commit。
 
-\section{实验九：从源码构建并在干净环境安装 Wheel}
+% ================= 第一部分：课上实验 =================
+
+\section{课上实验一：从源码构建并在干净环境安装 Wheel}
 
 \subsection{实验要求}
 
-在 q09 中创建一个最小 Python 命令行包 greetlab，包含 src/greetlab/\_\_init\_\_.py、cli.py 和 pyproject.toml。在课程环境中运行 python -m build 生成 wheel，新建一个干净虚拟环境只从生成的 wheel 安装，切换到 q09 之外运行 sdt-greet --name <学号> 确认输出正确。
+在 q09 中创建一个最小 Python 命令行包 greetlab，包含 src/greetlab/\_\_init\_\_.py、cli.py 和
+pyproject.toml。运行 python -m build 生成 wheel，新建干净虚拟环境只从 wheel 安装，
+切换到 q09 之外运行 sdt-greet --name <学号> 确认输出正确。
 
-\subsection{包结构}
+\subsection{包结构与构建}
 
-项目目录结构如下：
-
-\begin{verbatim}
-q09/
-├── pyproject.toml
-└── src/
-    └── greetlab/
-        ├── __init__.py
-        └── cli.py
-\end{verbatim}
-
-cli.py 实现了一个简单的命令行问候工具：
-
-\begin{lstlisting}[language=Python]
-import argparse
-
-def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--name", required=True)
-    a = p.parse_args()
-    print(f"Hello, {a.name}!")
-\end{lstlisting}
-
-pyproject.toml 配置了构建系统和入口点：
+项目使用 src 布局，pyproject.toml 配置 setuptools 构建后端与入口点：
 
 \begin{lstlisting}
 [build-system]
@@ -108,24 +99,7 @@ sdt-greet = "greetlab.cli:main"
 where = ["src"]
 \end{lstlisting}
 
-\subsection{构建与安装验证}
-
-使用 python -m build --no-isolation 生成 wheel：
-
-\begin{lstlisting}[language=bash]
-cd q09
-python -m build --no-isolation
-# Successfully built greetlab_25020007073-0.1.0.tar.gz
-# and greetlab_25020007073-0.1.0-py3-none-any.whl
-\end{lstlisting}
-
-创建干净虚拟环境并从 wheel 安装：
-
-\begin{lstlisting}[language=bash]
-python3 -m venv /tmp/q09_test_venv
-source /tmp/q09_test_venv/bin/activate
-pip install ./q09/dist/greetlab_25020007073-0.1.0-py3-none-any.whl
-\end{lstlisting}
+使用 python -m build --no-isolation 生成 sdist 与 wheel，在干净 venv 中仅从 wheel 安装。
 
 \subsection{结果}
 
@@ -135,86 +109,48 @@ pip install ./q09/dist/greetlab_25020007073-0.1.0-py3-none-any.whl
 Hello, 25020007073!
 \end{lstlisting}
 
-确认 wheel 包安装正确，入口点命令 sdt-greet 可用。
+确认 wheel 构建正确、入口点 sdt-greet 在干净环境可用。
 
-\section{实验十：让编程智能体进入可验证的修复循环}
+% ================= 课上实验二 =================
+
+\section{课上实验二：让编程智能体进入可验证的修复循环}
 
 \subsection{实验要求}
 
-复制 q09 为 q10，添加一个失败测试：当 name 只含空白字符时，main 应以 SystemExit(2) 结束。先运行测试确认失败，再向编程智能体说明目标、约束和测试命令，要求它修改实现并运行测试。人工检查 diff，撤销无关修改，并再次运行测试。在 ai\_log.md 中用不超过 5 行记录核心提示、智能体改动和人工验证。
+复制 q09 为 q10，添加失败测试：当 name 只含空白字符时，main 应以 SystemExit(2) 结束。
+先运行测试确认失败，再向编程智能体说明目标、约束和测试命令，要求它修改实现并运行测试。
+人工检查 diff、撤销无关修改，并在 ai\_log.md 中记录。
 
-\subsection{失败测试}
+\subsection{过程}
 
-创建 test\_cli.py 包含正常姓名测试和空白姓名测试：
-
-\begin{lstlisting}[language=Python]
-import pytest
-from greetlab.cli import main
-
-def test_normal_name(capsys):
-    import sys
-    sys.argv = ["sdt-greet", "--name", "alice"]
-    main()
-    out = capsys.readouterr().out
-    assert "Hello, alice!" in out
-
-def test_blank_name_exits_nonzero():
-    import sys
-    sys.argv = ["sdt-greet", "--name", "   "]
-    with pytest.raises(SystemExit) as exc_info:
-        main()
-    assert exc_info.value.code == 2
-\end{lstlisting}
-
-运行测试确认 test\_blank\_name\_exits\_nonzero 失败：
+失败测试（空白姓名应抛 SystemExit(2)）先红后绿：
 
 \begin{lstlisting}
 FAILED test_blank_name_exits_nonzero - Failed: DID NOT RAISE SystemExit
 1 failed, 1 passed
 \end{lstlisting}
 
-\subsection{智能体修复}
+智能体在 parse\_args() 后增加两行：if not a.name.strip(): raise SystemExit(2)。
+人工 diff 确认仅涉及 cli.py 第 8--9 行，无无关修改；pytest 2 项全部通过。
 
-向编程智能体发出提示：修复 greetlab cli.py，当 --name 只含空白字符时 main 应以 SystemExit(2) 退出。约束：不改动参数解析逻辑，测试命令 PYTHONPATH=src pytest test\_cli.py。
+\subsection{结论}
 
-智能体在 main() 中 parse\_args() 后添加了两行：
+只要提供明确目标、约束与测试命令，智能体能完成最小化修复，但必须人工审查 diff
+以确认未引入无关变更——这是"可验证修复循环"的关键。
 
-\begin{lstlisting}[language=Python]
-if not a.name.strip():
-    raise SystemExit(2)
-\end{lstlisting}
+% ================= 课上实验三 =================
 
-\subsection{人工验证与记录}
-
-检查 diff，确认仅涉及 cli.py 第 8--9 行，无无关修改。运行 pytest 两项测试均通过。ai\_log.md 记录如下：
-
-\begin{lstlisting}
-# AI Log
-提示：修复 greetlab cli.py，当 --name 只含空白字符时 main 应以 SystemExit(2) 退出。
-智能体改动：在 main() 中 parse_args() 后添加 if not a.name.strip(): raise SystemExit(2)，共增加2行。
-人工验证：diff 仅涉及 cli.py 第8-9行，无无关修改。pytest 2 passed，空白姓名测试通过。
-\end{lstlisting}
-
-\section{实验十一：把"无法处理"的协作材料改成可执行信息}
+\section{课上实验三：把"无法处理"的协作材料改成可执行信息}
 
 \subsection{实验要求}
 
-围绕"空姓名仍输出问候语"这一缺陷，改写三段质量较差的协作材料：Issue（Windows上运行不了，尽快修复）、提交信息（fix bug）、评审意见（这里写得不好，重写）。在 communication.md 中重写，包含环境、复现命令、期望结果和实际结果，未知信息写"待确认"。全文控制在 400 字以内。
+围绕"空姓名仍输出问候语"缺陷，改写三段质量较差的协作材料：Issue（"Windows上运行不了，
+尽快修复"）、提交信息（"fix bug"）、评审意见（"这里写得不好，重写"）。
 
 \subsection{重写结果}
 
-\textbf{Issue 重写}（包含环境、复现命令、期望/实际结果）：
-
-\begin{itemize}
-\item 标题：sdt-greet --name " " 输出非空问候语且退出码为0
-\item 环境：Windows 11，Python 3.x，greetlab-25020007073 0.1.0
-\item 复现命令：sdt-greet --name " "
-\item 期望结果：当 name 只含空白字符时，程序应以非零退出码退出，不输出问候语
-\item 实际结果：程序输出 Hello, ! 并以退出码0结束
-\item 待确认：是否需要对 name 做 Unicode 空白字符（如全角空格）的处理
-\end{itemize}
-
-\textbf{提交信息重写}（祈使语气标题，正文说明问题和解决方案）：
+Issue 重写为含环境、复现命令、期望/实际结果与待确认项的规范报告；提交信息使用祈使语气
+并说明"为什么"：
 
 \begin{lstlisting}
 fix: reject whitespace-only name and exit with code 2
@@ -224,33 +160,19 @@ When --name contains only whitespace, the program previously printed
 names, print an error message, and exit with SystemExit(2).
 \end{lstlisting}
 
-\textbf{评审意见重写}（标注 Blocking，指出具体行为、风险和建议动作）：
+评审意见标注 Blocking 级别，指出具体行为、下游风险与建议动作。全文控制在 400 字以内。
 
-Blocking —— cli.py:main() 在 name 为纯空白时未做校验，导致输出无意义问候语且退出码为0，违反 CLI 约定。风险：下游脚本可能依赖退出码判断成功/失败，当前行为会掩盖错误。建议动作：在 parse\_args() 后增加 name.strip() 校验，若为空则 raise SystemExit(2)，并补充对应测试用例。
+% ================= 课上实验四 =================
 
-\subsection{结果}
-
-重写后的三段材料均包含具体的环境信息、复现步骤、期望与实际结果对比，以及明确的修复建议，全文控制在 400 字以内，保持专业、简洁。
-
-\section{实验十二：修复一个可复现的线性回归训练循环}
+\section{课上实验四：修复一个可复现的线性回归训练循环}
 
 \subsection{实验要求}
 
-将给定的 PyTorch 线性回归代码保存为 q12/train.py，补全两个 TODO：清空梯度、反向传播、更新参数；进入评估模式并在 no\_grad 中打印最终损失、weight 和 bias。最终损失应小于 0.001，不得直接把 weight 和 bias 赋值为 3 和 $-1$。
+补全 PyTorch 线性回归训练循环中的两个 TODO：清空梯度/反向传播/更新参数；
+进入评估模式并在 no\_grad 中打印最终损失、weight 和 bias。最终损失应小于 0.001，
+不得直接把 weight 和 bias 赋值为 3 和 $-1$。
 
-\subsection{原始代码与补全}
-
-原始代码中训练循环缺少梯度清空、反向传播和参数更新步骤：
-
-\begin{lstlisting}[language=Python]
-for _ in range(200):
-    pred = model(x)
-    loss = loss_fn(pred, y)
-    # TODO：清空梯度、反向传播、更新参数
-    # TODO：进入评估模式并在no_grad中打印最终损失、weight和bias
-\end{lstlisting}
-
-补全后的完整训练循环：
+\subsection{补全与结果}
 
 \begin{lstlisting}[language=Python]
 for _ in range(200):
@@ -262,16 +184,11 @@ for _ in range(200):
 
 model.eval()
 with torch.no_grad():
-    final_pred = model(x)
-    final_loss = loss_fn(final_pred, y)
+    final_loss = loss_fn(model(x), y)
     print(f"final_loss={final_loss.item():.6f}")
     print(f"weight={model.weight.item():.6f}")
     print(f"bias={model.bias.item():.6f}")
 \end{lstlisting}
-
-\subsection{结果}
-
-运行 train.py 输出：
 
 \begin{lstlisting}
 final_loss=0.000000
@@ -279,46 +196,241 @@ weight=2.999997
 bias=-1.000000
 \end{lstlisting}
 
-最终损失为 0.000000，小于 0.001 的要求。weight 接近 3，bias 接近 $-1$，与目标函数 $y = 3x - 1$ 一致。训练过程通过 SGD 优化器（学习率 0.1）在 200 轮迭代中收敛，未直接赋值参数。
+最终损失 0.000000 $<$ 0.001，weight 接近 3、bias 接近 $-1$，与目标函数 $y=3x-1$ 一致；
+SGD（学习率 0.1）在 200 轮收敛，未直接赋值参数。
+% ================= 第二部分：课后练习 =================
+
+\section{课后练习（第三周 · 共 12 个）}
+
+\subsection{练习一：venv 环境差异——printenv 对比与 deactivate}
+
+\noindent\textbf{要求：}创建 venv、激活、printenv 前后各存一个文件并 diff，分析环境变化与
+shell 偏好 venv 的原因；运行 which deactivate 并解释该函数作用。
+
+\noindent\textbf{做法与结果：}创建 .venv 后 source activate，printenv 输出 before.txt/after.txt 并 diff。
+变化集中在三点：\textbf{PATH 前置遮蔽}（.venv/bin 插到 PATH 最前，使 which python3 从
+/usr/bin/python3 变为 .venv/bin/python3）、新增 VIRTUAL\_ENV 环境变量、PS1 增加 "(venv)" 前缀。
+shell 偏好 venv 是因为 PATH 查找按顺序进行，前置目录优先命中。deactivate 是 activate 脚本
+用 source 加载进当前 shell 的 \textbf{shell 函数}，执行时从 PATH 去掉 venv 前缀、unset
+VIRTUAL\_ENV、恢复 PS1；只有函数能修改当前 shell 环境，因此必须 source 而不能直接执行。
+
+\subsection{练习二：创建 Python 包并生成 lockfile}
+
+\noindent\textbf{要求：}创建带 pyproject.toml 的包并安装进 venv，创建并检查 lockfile。
+
+\noindent\textbf{做法与结果：}用 uv 创建 msgreet 包（pyproject.toml + src 布局 + [project.scripts]
+入口），uv build 生成 sdist 与 wheel 并安装进 venv，运行输出 "Hello, World!"。
+uv lock 生成 uv.lock，其中每个依赖都记录 url、sha256 哈希、size 与 upload-time 等锁定信息；
+uv sync --frozen 从 lockfile 独立重建并运行成功，证明 lockfile 自洽、可复现。
+
+\subsection{练习三：Docker 本地构建 Missing Semester 课程网站}
+
+\noindent\textbf{要求：}安装 Docker，用 docker compose 在本地构建 Missing Semester 官网。
+
+\noindent\textbf{做法与结果：}克隆官方仓库并编写 docker-compose.yml（Jekyll 站 + 代理两个
+service）。适配本机 fake-IP DNS 问题：容器内 apk 拉包需经宿主代理
+(\texttt{HTTP\_PROXY=http://172.26.224.1:7890} build-args) 才能成功。
+最终容器 Up、端口 4000 映射，curl 返回 HTTP 200，首页正确渲染 2026 课程内容，compose down 清理干净。
+
+\subsection{练习四：Dockerfile + docker-compose 运行应用与 Redis 缓存}
+
+\noindent\textbf{要求：}为 Python 应用写 Dockerfile，再写 docker-compose.yml 让应用与 Redis 一起运行。
+
+\noindent\textbf{做法与结果：}Dockerfile 基于 python:3.12-slim 安装依赖并启动 Flask 应用
+（访问 / 使 Redis 计数递增）；docker-compose.yml 定义 web 与 redis:7-alpine 两个 service。
+验证跨容器计数连续递增（1, 2, 3, \ldots），redis-cli 读到同一计数，证明 web 与 redis 数据一致、
+容器网络正常。
+
+\subsection{练习五：发布包到 TestPyPI 并推送镜像到 ghcr.io}
+
+\noindent\textbf{要求：}发布 Python 包到 TestPyPI；构建含该包的 Docker 镜像并推到 ghcr.io。
+
+\noindent\textbf{做法与结果：}构建 q05pkg-25020007073 包，twine check PASSED。因本机无公网
+凭据，先在机制完全一致的本地等效环境跑通全链路：pypiserver 等效 TestPyPI
+（twine upload + pip install --index-url 安装运行成功）、本地 registry 等效 ghcr.io
+（docker tag/push/pull 全通过）。随后在拿到 GitHub 令牌后完成\textbf{真实发布}：
+镜像已推送至 ghcr.io/mrllliao/q05pkg-25020007073:0.1.0（digest
+sha256:f644c18e\ldots），可 pull 并运行，镜像内 CLI 输出 "Hello, World!"。
+TestPyPI 需单独的 PyPI token（GitHub 令牌不能用于 PyPI），待补充凭据后即可上传。
+
+\subsection{练习六：用 GitHub Pages 做网站}
+
+\noindent\textbf{要求：}用 GitHub Pages 建网站（额外项：自定义域名）。
+
+\noindent\textbf{做法与结果：}先本地用 git worktree 建 gh-pages 孤儿分支演示发布机制
+（gh-pages 只含站点文件，main 工作区不被污染），本地 curl 验证 HTTP 200、标题与学号正确渲染。
+随后完成\textbf{真实上线}：gh-pages 分支推送到 GitHub，Pages 配置为从 gh-pages 分支发布，
+站点地址 \href{https://mrllliao.github.io/SystemToolkitDevCourse/}{https://mrllliao.github.io/SystemToolkitDevCourse/}
+访问返回 HTTP 200，标题"廖世嘉 · 系统开发工具基础"正常显示。
+\subsection{练习七：同一编程任务用四种模式各做一次}
+
+\noindent\textbf{要求：}把同一编程任务分别用手动编码、AI 自动补全、内联聊天、智能体各做一次并比较。
+
+\noindent\textbf{做法与结果：}选择 wordcount 小功能，四种模式各实现一次。四种产物在 --top 4
+输出上\textbf{逐字节一致}；针对 -l/-w/-c 三种统计标志做了列过滤修复；记录各模式在
+提示成本、迭代速度、人工介入程度上的体验差异（手动最可控但最慢，智能体最快但需审阅 diff）。
+
+\subsection{练习八：用 AI 智能体浏览陌生代码库}
+
+\noindent\textbf{要求：}用 AI 编程智能体浏览一个陌生代码库（本练习选择 tenacity 重试库）。
+
+\noindent\textbf{做法与结果：}克隆 tenacity 后让智能体建立可核验心智模型，产出证据矩阵与
+"责任闭合卡"（每条结论标注入口与调用链证据）。对两条核心结论（重试策略组合与
+enabled=False 短路行为）做真实运行验证，均 PASS，证明结论有据可查而非凭空猜测。
+
+\subsection{练习九：氛围编程（Vibe Coding）一个小应用}
+
+\noindent\textbf{要求：}从零开始氛围编程一个小应用，不手动写一行代码。
+
+\noindent\textbf{做法与结果：}通过自然语言描述需求，生成一个"番茄钟 + 待办"单文件应用
+（零依赖 HTML）。自动验证：GET /index.html HTTP 200、文件约 8.5 KB、标题正确；
+结构自检确认倒计时默认 25:00、开始/暂停/重置、待办增删等关键功能齐全，无外部依赖。
+
+\subsection{练习十：为编程智能体创建 AGENTS.md、Skill 与子智能体}
+
+\noindent\textbf{要求：}创建并测试 AGENTS.md（或等效文件）、一个 Skill、一个子智能体，
+思考何时用哪一种。
+
+\noindent\textbf{做法与结果：}在仓库根创建 AGENTS.md（记录项目结构、命令、分步提交规范与
+环境约束），后续所有提交都遵循它。创建 todo-audit Skill（扫描 TODO/FIXME/HACK 标记，
+支持 CI 退出码）：样例精确检出 3 处，仓库扫描发现 21 处匹配（含 q09 的 TODO\_KEY 子串误报），
+并因首次扫描把 .venv 第三方库 1003 处标记计入而\textbf{测试驱动打补丁}（排除依赖/构建目录）。
+创建 homework-reviewer 子智能体定义，其审查脚本如实发现 q05 的 solve.sh 未用
+dirname 约定，证明子智能体不是橡皮图章。结论：AGENTS.md 管"规矩"、Skill 管"本事"、
+子智能体管"专职角色"。
+
+\subsection{练习十一：Markdown 无序列表正则（不直接编辑文件）}
+
+\noindent\textbf{要求：}用智能体完成与代码质量一讲中 Markdown 无序列表正则练习相同的目标，
+但\textbf{不通过直接编辑文件}完成（提示：用第一讲的命令行工具）。
+
+\noindent\textbf{做法与结果：}构建只读命令行流水线（grep -P / sed -E / awk / md5sum）：
+朴素正则 \texttt{\textasciicircum{}\textbackslash{}s*[-*+]\textbackslash{}s+} 命中 9 处
+（含代码块内 2 行误报）；awk 维护三反引号围栏状态机后\textbf{精确匹配 7 处}；负例
+（有序列表、水平线 ---）匹配数均为 0；md5sum 前后一致证明源文件零改动。结论：
+正则只能看到"行"看不到"代码块"上下文，需状态机；智能体直接编辑文件有不可审阅、
+难回滚、易误伤等缺点，改为"生成 + 审阅"的流水线更安全。
+
+\subsection{练习十二：搭建隔离环境运行 YOLO 模式智能体}
+
+\noindent\textbf{要求：}YOLO 模式（如 --dangerously-skip-permissions）直接用在宿主上不安全，
+在虚拟机/容器等隔离环境中启用才可接受；搭建这样的环境（参考 Claude Code devcontainers /
+Docker Sandboxes 思路）。
+
+\noindent\textbf{做法与结果：}编写 Dockerfile（非 root 用户 agent）+ docker-compose.yml，
+将沙箱配置为：read\_only 根文件系统、cap\_drop ALL（丢弃全部 Linux 能力）、
+no-new-privileges、pids\_limit 64、mem\_limit 256m、network\_mode none、命名卷 workdir
+（唯一可写盘区）。在沙箱内运行边界验证，8 项全部通过：CapEff=0000000000000000（无能力）、
+NoNewPrivs=1（不能提权）、根挂载为 overlay ro、写 /etc 被拒、接口只剩 lo 且 curl 失败
+（断网）、pids.max=64、memory.max=268435456、/work/workdir 可正常写盘。由此证明：
+即便智能体在自主模式下"犯浑"，最坏也只是毁掉一个可丢弃的容器，宿主毫发无损。
+% ================= 第三部分：GitHub 提交记录 =================
+
+\section{GitHub 提交记录}
+
+按照考核要求，本周所有实验与课后练习均已上传到个人 GitHub 仓库，遵守"分步提交、
+禁止单次全量提交"规范：12 个课后练习各一个 commit，外加 README 文档提交，共 13 个提交；
+全仓库累计 81 个提交，工作区干净，全部已推送至远端。
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{commit_history.png}
+\end{center}
+
+仓库地址：\href{https://github.com/MrLLLiao/SystemToolkitDevCourse}{https://github.com/MrLLLiao/SystemToolkitDevCourse}
+
+本周课后练习提交记录（commit 摘要）：
+\begin{table}[H]
+\centering
+\caption{本周课后练习提交记录}
+\label{tab:commits}
+\begin{tabular}{clp{8.2cm}}
+\toprule
+哈希 & 类型 & 提交说明 \\
+\midrule
+d0871ee & feat & homework-q01: venv/printenv 对比与 deactivate 原理 \\
+3e5694f & feat & homework-q02: 创建 msgreet 包 + pyproject.toml + lockfile \\
+9e8dd32 & feat & homework-q03: Docker 构建 missing-semester 网站，HTTP 200 \\
+847eaf3 & feat & homework-q04: Dockerfile + compose + Redis 缓存，计数一致 \\
+5c89186 & feat & homework-q05: 发布链路演示（pypiserver/registry 等效） \\
+97ba8f0 & feat & homework-q06: GitHub Pages 静态站 + gh-pages 发布机制 \\
+a7b95a8 & feat & homework-q07: 四种编码模式对比，产物逐字节一致 \\
+9eb6848 & feat & homework-q08: 智能体浏览 tenacity，证据矩阵 + 真实验证 \\
+1032a5c & feat & homework-q09: 氛围编程番茄钟 + 待办应用（零手写代码） \\
+315f82c & feat & homework-q10: AGENTS.md + todo-audit Skill + 子智能体 \\
+1927f4b & feat & homework-q11: 无序列表正则（命令行只读完成，md5 零改动） \\
+f2eabcb & feat & homework-q12: YOLO 模式容器隔离沙箱，8 项边界通过 \\
+1826488 & docs & README 补充 week3 homework q01-q12 说明 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ================= 第四部分：汇总与感悟 =================
 
 \section{实验结果汇总}
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
-\caption{四个实验的完成情况}
+\caption{本周实验与练习完成情况}
 \label{tab:summary}
 \begin{tabular}{cll}
 \toprule
-题号 & 实验主题 & 验证结果 \\
+编号 & 内容 & 验证结果 \\
 \midrule
-9 & 打包与安装 Wheel & wheel 构建成功，干净环境安装并运行正确 \\
-10 & 智能体修复循环 & 失败测试确认，智能体修复后 2 项测试通过 \\
-11 & 协作材料改写 & Issue/提交/评审三段材料均改写为可执行信息 \\
-12 & PyTorch 训练循环 & 补全 zero\_grad/backward/step，损失 $<0.001$ \\
+课上实验 & 构建 Wheel / 智能体修复 / 协作改写 / 线性回归 & 全部通过，损失 $<0.001$ \\
+练习 1 & venv 环境对比 & diff 定位 PATH 遮蔽与 VIRTUAL\_ENV/PS1 变化 \\
+练习 2 & 包 + lockfile & uv sync --frozen 独立重建成功 \\
+练习 3 & Docker 构建网站 & 容器 Up，HTTP 200 \\
+练习 4 & Docker + Redis & 计数跨容器递增且一致 \\
+练习 5 & TestPyPI / ghcr.io & 本地全链路通过；ghcr.io 真实推送成功 \\
+练习 6 & GitHub Pages & 站点真实上线，HTTP 200 \\
+练习 7 & 四种编码模式 & 产物逐字节一致 \\
+练习 8 & 智能体浏览代码库 & 两条结论被真实运行证实 \\
+练习 9 & 氛围编程 & 功能自检全通过，零依赖 \\
+练习 10 & AGENTS/Skill/子智能体 & skill 检出真实标记，子智能体发现真问题 \\
+练习 11 & 无序列表正则 & awk 精确 7 处，负例全 0，md5 零改动 \\
+练习 12 & YOLO 隔离沙箱 & 8 项边界全部通过 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \section{问题与解决方法}
 
-\subsection{build 模块的 venv 依赖问题}
+\subsection{本机 fake-IP DNS 与代理问题（练习三/四/十二）}
 
-在 Windows Python 中运行 python -m build 时，由于缺少 venv 模块导致构建失败。解决方法是使用 --no-isolation 参数跳过隔离环境创建，直接使用当前 Python 环境中的 setuptools 进行构建。
+本机 WSL 存在 fake-IP DNS 问题，容器内 apt/apk 拉包与 git 访问 github.com 都会失败。
+解决：git 全局代理设为宿主代理 \texttt{http://172.26.224.1:7890}；Docker 构建传入
+HTTP\_PROXY/HTTPS\_PROXY build-args。此问题在练习三中首次定位并记录。
 
-\subsection{PyTorch 安装问题}
+\subsection{真实发布需要凭据（练习五/六）}
 
-WSL 环境中的 Python 3.14 没有预装 PyTorch，且 externally-managed-environment 限制了全局安装。解决方法是在 Windows Python 中通过 CPU 专用索引安装 PyTorch（pip install torch --index-url https://download.pytorch.org/whl/cpu），安装后成功运行训练脚本。
+本机默认无任何公网凭据。练习五先以机制一致的本地等效环境（pypiserver/本地 registry）
+跑通全链路；在用户提供 GitHub 令牌后完成 ghcr.io 真实推送与 GitHub Pages 真实上线。
+TestPyPI 需要独立 PyPI token，GitHub 令牌不能用于 PyPI，此项待补充凭据。
 
-\subsection{智能体修改的范围控制}
+\subsection{安全策略拦截"演示破坏性命令"（练习十二）}
 
-在实验十中，需要确保智能体的修改仅限于必要范围。通过人工检查 diff，确认修改仅涉及 cli.py 中新增的两行校验代码，没有对参数解析逻辑或其他文件产生无关变更。
+练习十二最初的演示脚本想"真的尝试 rm -rf /etc、mount"等越界命令，被系统安全策略拦截。
+改为\textbf{只读探测边界}的方式：直接读取 CapEff/NoNewPrivs/挂载/cgroup 证明配置生效，
+效果等价且更安全。
 
-\section{实验总结}
+\subsection{智能体直接编辑文件的局限（练习十一）}
 
-通过本次实验，我完整体验了从源码打包到 wheel 分发的流程，理解了 pyproject.toml 中构建系统、入口点和包发现的配置方式。实验十让我认识到编程智能体在测试驱动修复中的价值：只要提供明确的目标、约束和测试命令，智能体可以完成最小化修复，但仍需人工审查 diff 以确保不引入无关变更。
+智能体直接编辑文件不可审阅、难回滚、易误伤、不能沉淀复用。解决：用第一讲的命令行工具
+（grep/sed/awk）构建只读流水线，源文件 md5 前后一致作为"未改动"的证据。
 
-实验十一强化了协作材料的质量意识：Issue 应包含可复现的环境和命令，提交信息应使用祈使语气并说明"为什么"，评审意见应标注严重级别并给出具体建议。实验十二则让我实践了 PyTorch 训练循环的标准流程：zero\_grad $\to$ backward $\to$ step 的三步序列，以及评估模式下使用 no\_grad 防止梯度计算的正确做法。
+\section{解题感悟与实验总结}
 
-本周的核心认识是：无论是包安装、智能体修复还是模型训练，"可验证性"都是关键——wheel 需要在干净环境中验证安装，修复需要通过测试验证，训练需要通过损失值验证收敛。
+本周最大的收获是建立"可复现 + 可验证"的工程习惯。每个练习都配有 solve.sh（可重跑）
+与 output.txt（留证），并用 git 分步提交保证可追溯；12 个练习全部完成、全部提交、
+工作区干净并已推送远端。
+
+在智能体编程方面，我体验到四种编码模式的差异：手动编码可控但慢，自动补全效率高但
+只适合局部，内联聊天适合边聊边改，智能体适合端到端任务但必须审阅 diff。AGENTS.md、
+Skill、子智能体三种机制分别回答"规矩、本事、角色"的问题，可以叠加使用。
+
+在工程化方面，Docker 与发布链路让我理解了"本地等效 + 真实上线"的分步验证策略；
+隔离沙箱实验让我认识到自主模式的边界必须由基础设施兜底（无能力、只读根、断网、
+进程/内存受限），而不是依赖智能体"自觉"。正则练习则再次印证：工具链（命令行流水线）
+比"直接改文件"更安全、可复现、可组合。
 
 \end{document}
