@@ -1,0 +1,14 @@
+===== 1. 准备两个临时目录 A、B =====
+A=/tmp/marco_A.knsJ3W
+B=/tmp/marco_B.FEmf51
+
+===== 2. 进入 A, 执行 marco 保存目录 =====
+marco: 已保存目录 /tmp/marco_A.knsJ3W
+
+===== 3. 切换到 B =====
+当前目录: /tmp/marco_B.FEmf51
+
+===== 4. 执行 polo, 应回到 A =====
+polo: 已回到 /tmp/marco_A.knsJ3W
+回到: /tmp/marco_A.knsJ3W
+验证通过: 成功回到 marco 时所在的目录
