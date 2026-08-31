@@ -1,0 +1,56 @@
+===== 1. 创建 recipe.txt 并提交 =====
+初始提交完成
+
+===== 2. 创建两个分支 salty 和 sweet =====
+* master
+  salty
+  sweet
+
+===== 3. 在 salty 分支修改 (sugar -> salt) =====
+salty 提交完成
+
+===== 4. 在 sweet 分支修改 (1 cup -> 2 cups) =====
+sweet 提交完成
+
+===== 5. 回到 master 合并 salty =====
+Updating 6201877..ed6b13d
+Fast-forward (no commit created; -m option ignored)
+ recipe.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+recipe.txt 内容:
+Pancake Recipe
+1 cup flour
+1 cup salt
+1 cup milk
+
+===== 6. 合并 sweet (预期冲突) =====
+Auto-merging recipe.txt
+CONFLICT (content): Merge conflict in recipe.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+===== 7. 查看冲突标记的 recipe.txt =====
+Pancake Recipe
+1 cup flour
+<<<<<<< HEAD
+1 cup salt
+=======
+2 cups sugar
+>>>>>>> sweet
+1 cup milk
+
+===== 8. 解决冲突：保留 sweet 版本 (2 cups sugar) =====
+冲突解决完成
+
+===== 9. 可视化合并历史 =====
+*   1c90f80 Resolve merge conflict: keep sweet version (2 cups sugar)
+|\  
+| * cadb578 Double the sugar (sweet)
+* | ed6b13d Change sugar to salt (salty)
+|/  
+* 6201877 Add pancake recipe
+
+===== 10. 最终 recipe.txt =====
+Pancake Recipe
+1 cup flour
+2 cups sugar
+1 cup milk
