@@ -1,0 +1,23 @@
+===== 1. 创建 typo 纠正 alias dc='cd' =====
+执行 dc /tmp/alias_test.dPUIIF 后, PWD=/tmp/alias_test.dPUIIF
+验证通过: dc 等价于 cd
+
+===== 2. 为常用命令定义更短的 alias =====
+alias ll='ls -la'
+alias gs='git status'
+alias ga='git add'
+alias py='python3'
+alias gcm='git commit -m'
+
+===== 3. 用模拟 history 运行 top10 常用命令分析 =====
+--- 管道: history | awk '{$1="";print substr($0,2)}' | sort | uniq -c | sort -n | tail -n 10 ---
+      1 rm -rf *.pyc
+      1 rm -rf build
+      1 ssh vm
+      1 vim README.md
+      1 vim config.py
+      2 cd /root
+      2 python3 train.py
+      3 git status
+      4 ls
+      4 ls -la
