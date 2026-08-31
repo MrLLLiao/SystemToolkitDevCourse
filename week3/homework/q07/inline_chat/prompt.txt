@@ -1,0 +1,13 @@
+【内联聊天】我在改 wordcount.py（一个 wc 风格命令行工具，见下方代码）。请帮我在 main() 里加一个 --top N 选项：额外打印所有文件里出现次数最多的前 N 个词（小写、忽略标点）。要求：
+1. 只给我需要插入/修改的代码片段（不要重发整个文件）；
+2. 用 argparse 加参数；
+3. 词切分用 re.findall(r"[A-Za-z0-9]+", text)，计数用 collections.Counter；
+4. 不改变现有 -l/-w/-c 的输出行为。
+
+当前 main() 的大致结构：
+    ap.add_argument("files", nargs="+", ...)
+    ... -l -w -c 三个布尔参数 ...
+    flags = [args.l, args.w, args.c]
+    ...逐文件统计并打印...
+    if len(args.files) > 1:
+        print(... total)

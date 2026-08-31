@@ -1,0 +1,53 @@
+############ 1. 基线冒烟测试 ############
+       4      18     104
+
+############ 2. 四种模式产物一致性验证（--top 4 应完全一致） ############
+--- manual/wordcount_top.py ---
+       4      18     104
+--top 前 N 个高频词 --
+    3  hello
+    2  the
+    1  world
+    1  quick
+--- autocomplete/completed.py ---
+       4      18     104
+--top 前 N 个高频词 --
+    3  hello
+    2  the
+    1  world
+    1  quick
+--- inline_chat/wordcount_top.py ---
+       4      18     104
+--top 前 N 个高频词 --
+    3  hello
+    2  the
+    1  world
+    1  quick
+--- agent/wordcount_top.py ---
+       4      18     104
+--top 前 N 个高频词 --
+    3  hello
+    2  the
+    1  world
+    1  quick
+
+############ 3. 列过滤标志验证（-l/-w/-c 均生效） ############
+manual/wordcount_top.py:       18
+autocomplete/completed.py:       18
+inline_chat/wordcount_top.py:       18
+agent/wordcount_top.py:       18
+
+############ 4. 产物文件清单 ############
+./agent/agent_log.md
+./agent/task_prompt.txt
+./agent/wordcount_top.py
+./autocomplete/completed.py
+./autocomplete/skeleton.py
+./inline_chat/ai_reply.txt
+./inline_chat/prompt.txt
+./inline_chat/wordcount_top.py
+./manual/wordcount_top.py
+./output.txt
+./solve.sh
+./testdata/sample.txt
+./wordcount/wordcount.py

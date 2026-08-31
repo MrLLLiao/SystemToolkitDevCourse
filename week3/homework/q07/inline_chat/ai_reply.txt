@@ -1,0 +1,19 @@
+【AI 回复】好的，只需两处改动：
+
+1) 在现有参数之后加：
+ap.add_argument("--top", type=int, metavar="N", help="额外打印出现次数最多的前 N 个词")
+
+2) 在 main() 末尾（total 打印之后）加：
+    if args.top:
+        from collections import Counter
+        import re
+        words = []
+        for p in args.files:
+            with open(p, "rb") as f:
+                text = f.read().decode("utf-8", errors="replace")
+            words.extend(w.lower() for w in re.findall(r"[A-Za-z0-9]+", text))
+        print("--top 前 N 个高频词 --")
+        for w, c in Counter(words).most_common(args.top):
+            print(f"{c:5d}  {w}")
+
+注意：--top 放在末尾读取 args.top 即可，不会改变 -l/-w/-c 的输出行为。
