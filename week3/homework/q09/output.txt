@@ -1,0 +1,24 @@
+############ 1. 本地起站并 curl 验证 ############
+>>> GET /index.html => HTTP 200
+>>> 文件大小: 8539 字节
+<title>番茄钟 + 待办</title>
+
+############ 2. 结构 + 关键功能点自检 ############
+  [OK] 倒计时默认 25:00
+  [OK] 开始/暂停/重置
+  [OK] 时长切换 25/45/60
+  [OK] 提示音 Web Audio
+  [OK] 待办 localStorage 持久化
+  [OK] 无外部依赖(无 http/link/src)
+PASS: 全部关键功能点存在，且无外部依赖
+
+############ 3. 产物文件 ############
+total 36
+drwxr-xr-x  2 root root 4096 Aug 31 14:44 .
+drwxr-xr-x 12 root root 4096 Aug 30 17:05 ..
+-rw-r--r--  1 root root    0 Aug 31 10:27 .gitkeep
+-rw-r--r--  1 root root 8539 Aug 31 14:44 index.html
+-rw-r--r--  1 root root  504 Aug 31 14:44 output.txt
+-rw-r--r--  1 root root  737 Aug 31 14:43 prompt.md
+-rw-r--r--  1 root root  668 Aug 31 14:44 solve.sh
+-rw-r--r--  1 root root 1036 Aug 31 14:44 verify_app.py
