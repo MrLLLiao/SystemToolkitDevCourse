@@ -28,7 +28,10 @@ echo "===== 6. 在子 shell 中 source 新 .bashrc, 确认 PS1 生效 ====="
 ( source "$FAKE_HOME/.bashrc"; echo "PS1 已设置为: $PS1" )
 echo ""
 
-echo "===== 7. 版本控制状态: 本目录已被 git 跟踪 ====="
+echo "===== 7. 版本控制: 待提交文件与最终纳入跟踪 ====="
 cd /root/gitRepo/SystemToolkitDevCourse
-git ls-files week2/homework/q11 | head -5
+echo "-- 本练习新增文件(git status): --"
+git status --short week2/homework/q11 | head -8
+echo "-- 提交后 git ls-files 确认已跟踪: --"
+git ls-files week2/homework/q11 | sort | head -8
 rm -rf "$FAKE_HOME"
