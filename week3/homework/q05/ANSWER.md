@@ -95,4 +95,9 @@ docker push ghcr.io/mrllliao/q05pkg-25020007073:0.1.0
 - `docker pull ghcr.io/mrllliao/q05pkg-25020007073:0.1.0` 验证可拉取，`docker run` 输出 `Hello, World!`；
 - 包页：https://github.com/users/MrLLLiao/packages/container/package/q05pkg-25020007073 （当前为 private）。
 - 真实 push 前须先修本机 git 代理（`git config --global http.proxy http://172.26.224.1:7890`），否则连不上 github.com。
-- TestPyPI 仍待单独 PyPI token（GitHub 令牌不能用于 PyPI）。
+- TestPyPI 已用独立 token 完成**真实上传**：wheel + sdist 已发布至
+  https://test.pypi.org/project/q05pkg-25020007073/0.1.0/ ；
+- 全新 venv 中 \pip install --index-url https://test.pypi.org/simple/ q05pkg-25020007073\ 安装成功，
+  \q05hello\ 运行输出 "Hello, World!"（exit 0），导入路径为安装的 wheel（site-packages/q05pkg/cli.py）；
+- 教训：test.pypi.org 与 pypi.org 是两套独立账号体系，GitHub 令牌、pypi.org 令牌都不能用于 TestPyPI，
+  必须用 test.pypi.org 单独签发的 API token。

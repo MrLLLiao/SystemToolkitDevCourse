@@ -251,7 +251,7 @@ service）。适配本机 fake-IP DNS 问题：容器内 apk 拉包需经宿主�
 （docker tag/push/pull 全通过）。随后在拿到 GitHub 令牌后完成\textbf{真实发布}：
 镜像已推送至 ghcr.io/mrllliao/q05pkg-25020007073:0.1.0（digest
 sha256:f644c18e\ldots），可 pull 并运行，镜像内 CLI 输出 "Hello, World!"。
-TestPyPI 需单独的 PyPI token（GitHub 令牌不能用于 PyPI），待补充凭据后即可上传。
+TestPyPI 已用独立 token 完成\textbf{真实上传}：wheel + sdist 发布于 https://test.pypi.org/project/q05pkg-25020007073/0.1.0/，全新 venv 中 pip install --index-url https://test.pypi.org/simple/ 安装并运行 q05hello 输出 `Hello, World!''（exit 0）。
 
 \subsection{练习六：用 GitHub Pages 做网站}
 
@@ -372,7 +372,7 @@ f2eabcb & feat & homework-q12: YOLO 模式容器隔离沙箱，8 项边界通过
 \centering
 \caption{本周实验与练习完成情况}
 \label{tab:summary}
-\begin{tabular}{cll}
+\begin{tabular}{clp{6.2cm}}
 \toprule
 编号 & 内容 & 验证结果 \\
 \midrule
@@ -381,7 +381,7 @@ f2eabcb & feat & homework-q12: YOLO 模式容器隔离沙箱，8 项边界通过
 练习 2 & 包 + lockfile & uv sync --frozen 独立重建成功 \\
 练习 3 & Docker 构建网站 & 容器 Up，HTTP 200 \\
 练习 4 & Docker + Redis & 计数跨容器递增且一致 \\
-练习 5 & TestPyPI / ghcr.io & 本地全链路通过；ghcr.io 真实推送成功 \\
+练习 5 & TestPyPI / ghcr.io & 本地全链路通过；ghcr.io 真实推送 + TestPyPI 真实上传成功 \\
 练习 6 & GitHub Pages & 站点真实上线，HTTP 200 \\
 练习 7 & 四种编码模式 & 产物逐字节一致 \\
 练习 8 & 智能体浏览代码库 & 两条结论被真实运行证实 \\
@@ -405,7 +405,7 @@ HTTP\_PROXY/HTTPS\_PROXY build-args。此问题在练习三中首次定位并记
 
 本机默认无任何公网凭据。练习五先以机制一致的本地等效环境（pypiserver/本地 registry）
 跑通全链路；在用户提供 GitHub 令牌后完成 ghcr.io 真实推送与 GitHub Pages 真实上线。
-TestPyPI 需要独立 PyPI token，GitHub 令牌不能用于 PyPI，此项待补充凭据。
+TestPyPI 需要 test.pypi.org 单独签发的 API token（GitHub 令牌、pypi.org 令牌都不能用于 test.pypi.org），拿到专属 token 后已完成真实上传。
 
 \subsection{安全策略拦截"演示破坏性命令"（练习十二）}
 
