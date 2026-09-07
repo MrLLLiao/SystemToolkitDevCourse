@@ -1,0 +1,25 @@
+===== 1) actionlint 校验 CI 工作流 =====
+1.7.12
+installed by downloading from release page
+built with go1.26.1 compiler for linux/amd64
+.github/workflows/ci.yml:64:9: shellcheck reported issue in this script: SC2086:info:11:39: Double quote to prevent globbing and word splitting [shellcheck]
+   |
+64 |         run: |
+   |         ^~~~
+actionlint rc=1（0=通过）
+
+===== 2) 故意弄坏数据：shallow 层解锁等级 1 -> 99 =====
+数据已改坏（写入 mining_level=99）
+---- 模拟 CI：重建 + ctest ----
+build rc=0（预期 0，数据不影响编译）
+ctest rc=1 —— CI 抓到数据破坏（预期）
+[  FAILED  ] ContextGate.StartIdleEntersMining (2 ms)
+[  FAILED  ] ContextGate.DoubleStartBlockedKeepsLayer (0 ms)
+[  FAILED  ] ContextGate.StopResetsThenRestart (0 ms)
+[  FAILED  ] ContextGate.StatusQueryReadOnly (0 ms)
+
+===== 3) 还原并确认 21/21 =====
+
+Total Test time (real) =   3.72 sec
+git status:
+（工作区干净，演示无残留污染）

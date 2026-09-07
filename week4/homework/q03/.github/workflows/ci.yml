@@ -1,0 +1,79 @@
+# MudGame CI：构建 + 测试 + 变更文件的格式/lint 门禁。
+# 与本地 pre-commit 门禁保持一致：只检查变更的 C/C++ 文件（增量采用，不回溯存量风格债）。
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  build-test:
+    name: build + test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build
+      - name: Configure
+        run: cmake -S . -B build -G Ninja
+      - name: Build
+        run: cmake --build build
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  quality:
+    name: format + lint (changed files)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install linters
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format cppcheck
+      - name: Compute changed C/C++ files
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "首次推送无基线，跳过变更文件检查"
+            echo "files=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          FILES=$(git diff --name-only "$BASE"...HEAD -- 'src/**' 'tests/**' \
+            | grep -E '\.(cpp|h|hpp)$' || true)
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+      - name: clang-format check
+        run: |
+          FILES="${{ steps.changed.outputs.files }}"
+          if [ -n "$FILES" ]; then
+            clang-format --dry-run --Werror $FILES
+            echo "clang-format OK"
+          else
+            echo "无变更的 C/C++ 文件，跳过"
+          fi
+      - name: cppcheck (src)
+        run: |
+          FILES="${{ steps.changed.outputs.files }}"
+          SRC_FILES=$(printf '%s\n' "$FILES" | grep '^src/' || true)
+          if [ -z "$SRC_FILES" ]; then
+            echo "无变更的 src/ 文件，跳过 cppcheck"
+            exit 0
+          fi
+          INCLUDES=()
+          while IFS= read -r d; do INCLUDES+=("-I" "$d"); done < <(find src tests -type d -name include)
+          cppcheck --enable=warning,style,performance --std=c++20 \
+            --suppressions-list=.cppcheck-suppressions \
+            --error-exitcode=2 "${INCLUDES[@]}" $SRC_FILES
+      - name: shellcheck (scripts)
+        run: |
+          sudo apt-get install -y shellcheck
+          shellcheck -x scripts/*.sh
