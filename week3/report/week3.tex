@@ -101,6 +101,13 @@ where = ["src"]
 
 使用 python -m build --no-isolation 生成 sdist 与 wheel，在干净 venv 中仅从 wheel 安装。
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{q09-1.png}
+\caption{实验一构建过程：python -m build 从 sdist 构建 wheel，成功生成 tar.gz 与 whl 安装包}
+\label{fig:q09-build}
+\end{figure}
+
 \subsection{结果}
 
 在 q09 之外运行 sdt-greet --name 25020007073 输出：
@@ -195,6 +202,13 @@ final_loss=0.000000
 weight=2.999997
 bias=-1.000000
 \end{lstlisting}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{q12-1.png}
+\caption{实验四运行结果：train.py 训练 200 轮后输出 final\_loss、weight、bias}
+\label{fig:q12-train}
+\end{figure}
 
 最终损失 0.000000 $<$ 0.001，weight 接近 3、bias 接近 $-1$，与目标函数 $y=3x-1$ 一致；
 SGD（学习率 0.1）在 200 轮收敛，未直接赋值参数。
