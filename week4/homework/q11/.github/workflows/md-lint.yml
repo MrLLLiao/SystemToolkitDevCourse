@@ -1,0 +1,33 @@
+# md-lint：.md 变更时用自定义 proselint Action 检查文体。
+# 增量策略：只检查本次变更的 .md（与 ci.yml 的格式/lint 一致，不回溯存量）。
+name: md-lint
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  prose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Compute changed markdown files
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+          fi
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            echo "files=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          FILES=$(git diff --name-only "$BASE"...HEAD -- '*.md' || true)
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+      - uses: ./.github/actions/proselint-check
+        with:
+          files: ${{ steps.changed.outputs.files }}

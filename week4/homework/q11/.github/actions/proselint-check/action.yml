@@ -1,0 +1,28 @@
+# 自定义复合 Action：对传入的 markdown 文件运行 proselint 并报告文体违规。
+# 用法：
+#   - uses: ./.github/actions/proselint-check
+#     with:
+#       files: README.md docs/foo.md
+name: 'Proselint Markdown Check'
+description: 'Run proselint on given markdown files and report style lapses'
+
+inputs:
+  files:
+    description: 'Space-separated markdown file paths to check'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install proselint
+      shell: bash
+      run: python -m pip install --quiet proselint
+    - name: Run proselint on markdown files
+      shell: bash
+      run: |
+        FILES="${{ inputs.files }}"
+        if [ -z "$FILES" ]; then
+          echo "无 markdown 变更，跳过"
+          exit 0
+        fi
+        proselint check $FILES
