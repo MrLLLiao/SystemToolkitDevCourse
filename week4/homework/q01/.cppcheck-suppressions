@@ -1,0 +1,10 @@
+// 库代码无 main，未用函数不报
+unusedFunction
+// 第三方头/系统头不追踪
+missingIncludeSystem
+// time_service：GameDateTime 是 20 字节小值类型，按值语义是刻意设计
+passedByValue:src/Model/Timeservice/src/time_service.cpp
+// time_service.h：now() 按值返回保持值语义（配合 [[nodiscard]]）
+returnByReference:src/Model/Timeservice/include/time_service.h
+// TimeService 是普通类，非回调函数（cppcheck 误判）
+passedByValueCallback:src/Model/Timeservice/src/time_service.cpp

@@ -1,0 +1,35 @@
+===== 1) 工具版本 =====
+Ubuntu clang-format version 21.1.8 (6ubuntu1)
+Cppcheck 2.19.0
+pre-commit 4.6.2
+
+===== 2) 门禁：staged C/C++ 文件 clang-format --dry-run --Werror =====
+（当前无 staged C/C++ 文件，回溯最近 20 个提交取首个含 C/C++ 文件的提交演示）
+检查文件: src/Objects/include/object.h
+clang-format rc=0 （0 表示格式合规）
+
+===== 3) cppcheck 静态分析（生产代码 src/） =====
+（输出为空=无告警；存量告警属增量采用策略可接受范围）
+
+===== 4) pre-commit 钩子配置 =====
+# MudGame pre-commit 钩子：提交前自动执行格式/静态检查，并增量构建+测试。
+# 使用 local 钩子（复用本机已装工具），无需联网下载钩子仓库。
+repos:
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format (staged C/C++ files)
+        entry: clang-format --dry-run --Werror
+        language: system
+        files: '\.(cpp|h|hpp)$'
+      - id: cppcheck
+        name: cppcheck (staged C++ files)
+        entry: bash scripts/hook_cppcheck.sh
+        language: system
+        files: '\.cpp$'
+      - id: build-and-test
+        name: incremental build + ctest
+        entry: bash scripts/check_staged.sh
+        language: system
+        files: '\.(cpp|h|hpp|cmake|txt|sh)$'
+        pass_filenames: false

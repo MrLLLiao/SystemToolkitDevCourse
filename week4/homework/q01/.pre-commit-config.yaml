@@ -1,0 +1,21 @@
+# MudGame pre-commit 钩子：提交前自动执行格式/静态检查，并增量构建+测试。
+# 使用 local 钩子（复用本机已装工具），无需联网下载钩子仓库。
+repos:
+  - repo: local
+    hooks:
+      - id: clang-format
+        name: clang-format (staged C/C++ files)
+        entry: clang-format --dry-run --Werror
+        language: system
+        files: '\.(cpp|h|hpp)$'
+      - id: cppcheck
+        name: cppcheck (staged C++ files)
+        entry: bash scripts/hook_cppcheck.sh
+        language: system
+        files: '\.cpp$'
+      - id: build-and-test
+        name: incremental build + ctest
+        entry: bash scripts/check_staged.sh
+        language: system
+        files: '\.(cpp|h|hpp|cmake|txt|sh)$'
+        pass_filenames: false
