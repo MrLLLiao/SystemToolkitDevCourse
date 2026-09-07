@@ -1,0 +1,8 @@
+rules:
+  - id: dangerous-shell-true
+    pattern-either:
+      - pattern: subprocess.Popen(..., shell=True)
+      - pattern: os.system(...)
+    message: dangerous shell invocation
+    languages: [python]
+    severity: WARNING
