@@ -1,0 +1,10 @@
+{
+  "ore": [
+    {"name": "黯铁矿", "price": 8, "exp": 5, "level": 1},
+    {"name": "星纹银", "price": 25, "exp": 12, "level": 3},
+    {"name": "赤耀金", "price": 60, "exp": 20, "level": 5},
+    {"name": "雷鸣晶", "price": 150, "exp": 8, "level": 8},
+    {"name": "世界之核", "price": 500, "exp": 15, "level": 10}
+  ],
+  "note": "含转义引号的样例：say \"hi\""
+}
