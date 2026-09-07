@@ -1,0 +1,14 @@
+===== 1) 往 object.cpp 追加语法错误并暂存 =====
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+===== 2) 运行 pre-commit 钩子（等同提交时触发） =====
+cppcheck (staged C++ files)..............................................Failed
+src/Objects/src/object.cpp:15:57: error: Unmatched '{'. Configuration: ''. [syntaxError]
+incremental build + ctest................................................Failed
+/root/gitRepo/MudGame/src/Objects/src/object.cpp:15:58: error: expected primary-expression at end of input
+/root/gitRepo/MudGame/src/Objects/src/object.cpp:15:58: error: expected ‘}’ at end of input
+/root/gitRepo/MudGame/src/Objects/src/object.cpp:15:58: error: expected ‘)’ at end of input
+
+===== 3) 还原（工作树 + 暂存区） =====
+ M rust-version-demo/Cargo.toml
+（工作区已还原干净）
