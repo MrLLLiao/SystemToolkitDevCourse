@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MudGame</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 42rem; margin: 3rem auto;
+         padding: 0 1rem; line-height: 1.7; color: #222; }
+  h1 { border-bottom: 2px solid #444; padding-bottom: .3rem; }
+  code { background: #f0f0f0; padding: .1rem .35rem; border-radius: 4px; }
+  li { margin: .3rem 0; }
+</style>
+</head>
+<body>
+<h1>MudGame</h1>
+<p>系统开发工具基础（Missing Semester）课程练习项目 —— 命令行采矿游戏。</p>
+<h2>构建与测试</h2>
+<ul>
+  <li><code>make build</code> —— CMake 配置并构建</li>
+  <li><code>make test</code> —— 运行全部单元测试（21 个用例）</li>
+  <li><code>make coverage</code> —— 生成覆盖率报告</li>
+  <li><code>make clean</code> —— 清理构建产物</li>
+</ul>
+<h2>质量门禁</h2>
+<ul>
+  <li>clang-format 格式检查（增量：只检查变更文件）</li>
+  <li>cppcheck 静态分析（生产代码）</li>
+  <li>pre-commit：格式 + lint + 构建 + 测试，任一失败拒绝提交</li>
+  <li>GitHub Actions CI：构建、测试、格式/lint/shellcheck</li>
+</ul>
+<p><small>本页由 GitHub Pages 工作流自动部署。</small></p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+===== shellcheck 版本与脚本检查 =====
+ShellCheck - shell script analysis tool
+version: 0.11.0
+
+ALL PASS（4 个脚本）
+
+===== actionlint 校验 Pages 工作流 =====
+actionlint rc=0（0=通过）
+
+===== Pages 工作流与静态站点 =====
+--- .github/workflows/pages.yml ---
+# GitHub Pages：把 docs/ 静态站点部署到 Pages（需在仓库 Settings → Pages
+# 选择 "GitHub Actions" 作为发布源）。
+name: GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+--- docs/index.html 标题 ---
+<title>MudGame</title>
+<h1>MudGame</h1>
